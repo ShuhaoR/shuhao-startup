@@ -1,11 +1,13 @@
 // src/components/Home.js
 import React from 'react';
+import '../styles/main.css';
 
 const Home = () => {
   return (
-    <div>
-      <h1>Welcome to Shuhao Shanghai Startup</h1>
-      <p>This is the home page.</p>
+    <div className="container">
+      <h1>Welcome to Shuhao Startup</h1>
+      <p>Your one-stop solution for all your business needs.</p>
+      <a href="/company-intro" className="button">Learn More</a>
     </div>
   );
 };
