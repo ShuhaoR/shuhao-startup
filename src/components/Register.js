@@ -9,7 +9,7 @@ const Register = () => {
 
   const handleSubmit = async (values) => {
     try {
-      await axios.post('http://localhost:5000/api/auth/register', values);
+      await axios.post('https://shuhao-startup.onrender.com/api/auth/register', values);
       alert('Registration successful! Please log in.');
       navigate('/login');
     } catch (error) {

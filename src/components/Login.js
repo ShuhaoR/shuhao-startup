@@ -9,7 +9,8 @@ const Login = () => {
 
   const handleSubmit = async (values) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/auth/login', values);
+      const response = await axios.post('https://shuhao-startup.onrender.com/api/auth/login', values);
+      localStorage.setItem('token', response.data.token);  // Store the token
       localStorage.setItem('isLoggedIn', true);
       navigate('/company-intro');
     } catch (error) {

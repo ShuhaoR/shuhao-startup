@@ -1,44 +1,37 @@
 // src/components/PostRequest.js
-import React, { useState } from 'react';
+import React from 'react';
+import { Formik, Form, Field } from 'formik';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 const PostRequest = () => {
-  const [formData, setFormData] = useState({ name: '', message: '' });
+  const navigate = useNavigate();
+  const token = localStorage.getItem('token');
 
-  const handleChange = (e) => {
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-  };
-
-  const handleSubmit = async (e) => {
-    e.preventDefault();
+  const handleSubmit = async (values) => {
     try {
-      const response = await axios.post('http://localhost:5000/api/requests', formData);
+      const response = await axios.post('https://shuhao-startup.onrender.com/api/requests', values, {
+        headers: {
+          'Authorization': `Bearer ${token}`,
+        },
+      });
       alert('Request submitted successfully');
+      navigate('/');
     } catch (error) {
-      alert('Failed to submit request');
+      console.error('Failed to submit request:', error.response ? error.response.data.error : error.message);
+      alert('Failed to submit request: ' + (error.response ? error.response.data.error : error.message));
     }
   };
 
   return (
-    <div>
-      <h2>Post a Request</h2>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          value={formData.message}
-          onChange={handleChange}
-        ></textarea>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+    <Formik initialValues={{ name: '', email: '', message: '' }} onSubmit={handleSubmit}>
+      <Form>
+        <Field name="name" placeholder="Name" />
+        <Field name="email" type="email" placeholder="Email" />
+        <Field name="message" as="textarea" placeholder="Message" />
+        <button type="submit">Submit Request</button>
+      </Form>
+    </Formik>
   );
 };
 
