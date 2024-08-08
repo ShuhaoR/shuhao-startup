@@ -1,8 +1,8 @@
 // backend/routes/requests.js
 const express = require('express');
 const router = express.Router();
-const authMiddleware = require('../middleware/auth');
-const Request = require('../models/Request');
+const authMiddleware = require('../middleware/auth'); 
+const Request = require('../models/Request'); 
 
 router.post('/', authMiddleware, async (req, res) => {
   const { username, message } = req.body;
