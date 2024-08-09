@@ -8,7 +8,10 @@ const applicationRoutes = require('./routes/applications');
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+app.use(cors({
+  origin: 'https://shuhao-startup.vercel.app', // Replace with your frontend's Vercel URL
+  credentials: true
+}));
 
 app.use('/api/auth', authRoutes);
 app.use('/api/requests', requestRoutes);

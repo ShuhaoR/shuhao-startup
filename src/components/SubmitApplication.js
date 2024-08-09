@@ -6,13 +6,13 @@ import { useNavigate } from 'react-router-dom';
 
 const SubmitApplication = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token');
+  const token = localStorage.getItem('token'); // Retrieve the token from local storage
 
   const handleSubmit = async (values) => {
     try {
       const response = await axios.post('https://shuhao-startup.onrender.com/api/applications', values, {
         headers: {
-          'Authorization': `Bearer ${token}`,
+          'Authorization': `Bearer ${token}`, // Pass the token in the header
         },
       });
       alert('Application submitted successfully');
