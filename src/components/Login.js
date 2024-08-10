@@ -26,7 +26,7 @@ const Login = ({ setIsLoggedIn }) => {
       if (response.ok) {
         setIsLoggedIn(true);
         localStorage.setItem("isLoggedIn", "true");
-        navigate("/post-request");
+        navigate("/services");
       } else {
         setError(data.message);
       }
