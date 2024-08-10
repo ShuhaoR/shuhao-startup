@@ -2,34 +2,26 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // Import useTranslation hook
+import { useTranslation } from "react-i18next";
 import "../styles/submitApplication.css";
 
 const SubmitApplication = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem("token"); // Retrieve the token from local storage
-  const { t } = useTranslation(); // Initialize translation hook
+  const token = localStorage.getItem("token");
+  const { t } = useTranslation();
 
   const handleSubmit = async (values) => {
     try {
-      const formData = new FormData();
-      formData.append("name", values.name);
-      formData.append("email", values.email);
-      formData.append("resume", values.resume);
-      formData.append("school", values.school);
-      formData.append("major", values.major);
-
       const response = await axios.post(
         "https://shuhao-startup.onrender.com/api/applications",
-        formData,
+        values,
         {
           headers: {
-            Authorization: `Bearer ${token}`, // Pass the token in the header
-            "Content-Type": "multipart/form-data", // Set content type for file upload
+            Authorization: `Bearer ${token}`,
           },
         }
       );
-      alert(t("application_success")); // Translated success message
+      alert(t("application_success"));
       navigate("/");
     } catch (error) {
       console.error(
@@ -39,57 +31,66 @@ const SubmitApplication = () => {
       alert(
         t("application_failed") +
           (error.response ? error.response.data.error : error.message)
-      ); // Translated failure message
+      );
     }
   };
 
   return (
     <div className="application-container">
-      <h1>{t("submit_application")}</h1> {/* Translated Submit Application */}
+      <h1>{t("submit_application")}</h1>
       <Formik
-        initialValues={{
-          name: "",
-          email: "",
-          resume: null,
-          school: "",
-          major: "",
-        }}
+        initialValues={{ name: "", email: "", resume: "" }}
         onSubmit={handleSubmit}
+        validate={(values) => {
+          const errors = {};
+          if (!values.name) {
+            errors.name = "Required";
+          }
+          if (!values.email) {
+            errors.email = "Required";
+          }
+          if (!values.resume) {
+            errors.resume = "Required";
+          }
+          return errors;
+        }}
       >
-        {({ setFieldValue }) => (
+        {({ errors, touched }) => (
           <Form className="application-form">
             <Field
               name="name"
-              placeholder={t("name")} // Translated Name
-              className="form-field"
+              placeholder={t("name")}
+              className={`form-field ${
+                touched.name && errors.name ? "error" : ""
+              }`}
             />
             <Field
               name="email"
               type="email"
-              placeholder={t("email")} // Translated Email
-              className="form-field"
+              placeholder={t("email")}
+              className={`form-field ${
+                touched.email && errors.email ? "error" : ""
+              }`}
             />
             <Field
-              name="school"
-              placeholder={t("school_graduated")} // Translated School
-              className="form-field"
-            />
-            <Field
-              name="major"
-              placeholder={t("major")} // Translated Major
-              className="form-field"
-            />
-            <input
               name="resume"
-              type="file"
-              accept=".pdf,.doc,.docx"
-              onChange={(event) => {
-                setFieldValue("resume", event.currentTarget.files[0]);
-              }}
-              className="form-field"
+              as="textarea"
+              placeholder={t("resume")}
+              className={`form-field textarea-field ${
+                touched.resume && errors.resume ? "error" : ""
+              }`}
             />
+            {errors.name && touched.name && (
+              <div className="error-message">{errors.name}</div>
+            )}
+            {errors.email && touched.email && (
+              <div className="error-message">{errors.email}</div>
+            )}
+            {errors.resume && touched.resume && (
+              <div className="error-message">{errors.resume}</div>
+            )}
             <button type="submit" className="submit-button">
-              {t("submit_application")} {/* Translated Submit Button */}
+              {t("submit_application")}
             </button>
           </Form>
         )}

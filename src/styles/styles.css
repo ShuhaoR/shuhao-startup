@@ -11972,13 +11972,9 @@ nav ul li a:hover {
 .logout-button {
   background: none;
   border: none;
+  color: #ffa500;
   cursor: pointer;
   padding: 10px;
-  display: inline-block;
-  color: #ffa500;
-  text-decoration: none;
-  padding: 10px;
-  display: inline-block;
 }
 
 .logout-button:hover {
