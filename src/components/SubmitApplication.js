@@ -11,21 +11,14 @@ const SubmitApplication = () => {
   const { t } = useTranslation();
 
   const handleSubmit = async (values) => {
-    const formData = new FormData();
-    formData.append("name", values.name);
-    formData.append("email", values.email);
-    formData.append("resume", values.resume);
-    formData.append("school", values.school);
-    formData.append("major", values.major);
-
     try {
       const response = await axios.post(
         "https://shuhao-startup.onrender.com/api/applications",
-        formData,
+        values,
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
+            "Content-Type": "application/json", // Change back to JSON format
           },
         }
       );
@@ -50,7 +43,7 @@ const SubmitApplication = () => {
         initialValues={{
           name: "",
           email: "",
-          resume: null,
+          resume: "",
           school: "",
           major: "",
         }}
@@ -65,18 +58,11 @@ const SubmitApplication = () => {
           }
           if (!values.resume) {
             errors.resume = "Required";
-          } else if (
-            values.resume.type !== "application/pdf" &&
-            values.resume.type !==
-              "application/vnd.openxmlformats-officedocument.wordprocessingml.document" &&
-            values.resume.type !== "application/msword"
-          ) {
-            errors.resume = "Only .pdf or .docx files are accepted";
           }
           return errors;
         }}
       >
-        {({ setFieldValue, errors, touched }) => (
+        {({ errors, touched }) => (
           <Form className="application-form">
             <Field
               name="name"
@@ -99,17 +85,13 @@ const SubmitApplication = () => {
             {errors.email && touched.email && (
               <div className="error-message">{errors.email}</div>
             )}
-            <input
-              id="resume"
+            <Field
               name="resume"
-              type="file"
-              className={`form-field ${
+              as="textarea"
+              placeholder={t("resume")} // Treat resume as text input
+              className={`form-field textarea-field ${
                 touched.resume && errors.resume ? "error" : ""
               }`}
-              onChange={(event) => {
-                setFieldValue("resume", event.currentTarget.files[0]);
-              }}
-              accept=".pdf,.doc,.docx"
             />
             {errors.resume && touched.resume && (
               <div className="error-message">{errors.resume}</div>
