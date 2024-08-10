@@ -5,14 +5,34 @@ import { useNavigate } from "react-router-dom";
 const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const handleLogin = () => {
-    // Here you would add your login logic, possibly a call to the backend to validate the user
-    // For this example, we'll assume the login is always successful.
-    setIsLoggedIn(true);
-    localStorage.setItem("isLoggedIn", "true");
-    navigate("/post-request");
+  const handleLogin = async () => {
+    try {
+      const response = await fetch(
+        "https://shuhao-startup.onrender.com/api/auth/login",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ email, password }),
+        }
+      );
+
+      const data = await response.json();
+
+      if (response.ok) {
+        setIsLoggedIn(true);
+        localStorage.setItem("isLoggedIn", "true");
+        navigate("/post-request");
+      } else {
+        setError(data.message);
+      }
+    } catch (err) {
+      setError("Network error");
+    }
   };
 
   return (
@@ -31,6 +51,7 @@ const Login = ({ setIsLoggedIn }) => {
         placeholder="Password"
       />
       <button onClick={handleLogin}>Login</button>
+      {error && <p>{error}</p>}
     </div>
   );
 };
