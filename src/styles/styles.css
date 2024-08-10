@@ -104,8 +104,15 @@
 
 body {
   background: url("../assets/images/taipei.png") no-repeat center center/cover;
-  padding-top: 70px; /* Adjust based on your navbar height */
+  height: 100vh;
+  padding-top: 70px;
   margin: 0;
+
+  padding: 0;
+  background-size: cover;
+  height: 100vh;
+  justify-content: center;
+
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
   font-weight: var(--bs-body-font-weight);
@@ -115,6 +122,17 @@ body {
   background-color: var(--bs-body-bg);
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+
+  /*margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: url("../assets/images/taipei.png") no-repeat center center;
+  background-size: cover;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;*/
 }
 
 hr {
@@ -11787,11 +11805,22 @@ body {
   color: white;
   text-align: center;
 }
-
+/*
 .hero-content {
   max-width: 600px;
   margin: 0 auto;
   color: #000;
+}
+*/
+.hero-content {
+  color: #000;
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  position: relative;
+  top: -150px; /* Moves the text upward */
+  left: 150px; /* Moves the text rightward */
 }
 
 .btn-primary {
@@ -11816,22 +11845,50 @@ body {
 }
 
 .service-cards {
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Two columns */
+  grid-template-rows: 1fr 1fr; /* Two rows */
+  gap: 20px; /* Adjust the gap between the cards */
+  max-width: 100%;
+  margin: 0 auto; /* Center the grid on the page */
+  height: 100vh; /* Ensure the cards take up the full height of the viewport */
 }
 
 .service-card {
-  width: 30%;
+  background-color: white;
   padding: 20px;
-  background: white;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   text-align: center;
+  height: 100%; /* Make sure the cards take up the full height of the grid area */
 }
 
 .service-card .icon {
-  font-size: 40px;
-  margin-bottom: 20px;
-  color: #ffcc00; /* Example icon color */
+  text-align: center;
+  margin-bottom: 15px; /* Increased space between the icon and the text */
+}
+
+.service-card .icon img {
+  width: 80px; /* Increased width */
+  height: 80px; /* Increased height */
+}
+
+.service-card .btn {
+  margin-top: 10px;
+  padding: 10px 20px;
+  background-color: #ffa500;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.service-card .btn:hover {
+  background-color: #e69500;
 }
 
 /* src/styles/styles.css */
