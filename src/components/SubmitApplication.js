@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -11,14 +11,14 @@ const SubmitApplication = () => {
   const { t } = useTranslation();
 
   const handleSubmit = async (values) => {
-    try {
-      const formData = new FormData();
-      formData.append("name", values.name);
-      formData.append("email", values.email);
-      formData.append("school", values.school);
-      formData.append("major", values.major);
-      formData.append("resume", values.resume);
+    const formData = new FormData();
+    formData.append("name", values.name);
+    formData.append("email", values.email);
+    formData.append("resume", values.resume);
+    formData.append("school", values.school);
+    formData.append("major", values.major);
 
+    try {
       const response = await axios.post(
         "https://shuhao-startup.onrender.com/api/applications",
         formData,
@@ -50,34 +50,28 @@ const SubmitApplication = () => {
         initialValues={{
           name: "",
           email: "",
+          resume: null,
           school: "",
           major: "",
-          resume: null,
         }}
         onSubmit={handleSubmit}
         validate={(values) => {
           const errors = {};
           if (!values.name) {
-            errors.name = t("required");
+            errors.name = "Required";
           }
           if (!values.email) {
-            errors.email = t("required");
-          }
-          if (!values.school) {
-            errors.school = t("required");
-          }
-          if (!values.major) {
-            errors.major = t("required");
+            errors.email = "Required";
           }
           if (!values.resume) {
-            errors.resume = t("required");
+            errors.resume = "Required";
           } else if (
-            ![
-              "application/pdf",
-              "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
-            ].includes(values.resume.type)
+            values.resume.type !== "application/pdf" &&
+            values.resume.type !==
+              "application/vnd.openxmlformats-officedocument.wordprocessingml.document" &&
+            values.resume.type !== "application/msword"
           ) {
-            errors.resume = t("invalid_file_type");
+            errors.resume = "Only .pdf or .docx files are accepted";
           }
           return errors;
         }}
@@ -91,12 +85,9 @@ const SubmitApplication = () => {
                 touched.name && errors.name ? "error" : ""
               }`}
             />
-            <ErrorMessage
-              name="name"
-              component="div"
-              className="error-message"
-            />
-
+            {errors.name && touched.name && (
+              <div className="error-message">{errors.name}</div>
+            )}
             <Field
               name="email"
               type="email"
@@ -105,55 +96,34 @@ const SubmitApplication = () => {
                 touched.email && errors.email ? "error" : ""
               }`}
             />
-            <ErrorMessage
-              name="email"
-              component="div"
-              className="error-message"
-            />
-
-            <Field
-              name="school"
-              placeholder={t("school_graduated")}
-              className={`form-field ${
-                touched.school && errors.school ? "error" : ""
-              }`}
-            />
-            <ErrorMessage
-              name="school"
-              component="div"
-              className="error-message"
-            />
-
-            <Field
-              name="major"
-              placeholder={t("major")}
-              className={`form-field ${
-                touched.major && errors.major ? "error" : ""
-              }`}
-            />
-            <ErrorMessage
-              name="major"
-              component="div"
-              className="error-message"
-            />
-
+            {errors.email && touched.email && (
+              <div className="error-message">{errors.email}</div>
+            )}
             <input
+              id="resume"
               name="resume"
               type="file"
-              accept=".pdf,.docx"
-              onChange={(event) =>
-                setFieldValue("resume", event.currentTarget.files[0])
-              }
               className={`form-field ${
                 touched.resume && errors.resume ? "error" : ""
               }`}
+              onChange={(event) => {
+                setFieldValue("resume", event.currentTarget.files[0]);
+              }}
+              accept=".pdf,.doc,.docx"
             />
-            <ErrorMessage
-              name="resume"
-              component="div"
-              className="error-message"
+            {errors.resume && touched.resume && (
+              <div className="error-message">{errors.resume}</div>
+            )}
+            <Field
+              name="school"
+              placeholder={t("school_graduated")}
+              className="form-field"
             />
-
+            <Field
+              name="major"
+              placeholder={t("major")}
+              className="form-field"
+            />
             <button type="submit" className="submit-button">
               {t("submit_application")}
             </button>

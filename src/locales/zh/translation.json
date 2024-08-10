@@ -30,5 +30,6 @@
   "request_failed": "提交請求失敗：",
   "resume": "簡歷",
   "application_success": "申請提交成功",
-  "application_failed": "提交申請失敗："
+  "application_failed": "提交申請失敗：",
+  "logout": "登出"
 }

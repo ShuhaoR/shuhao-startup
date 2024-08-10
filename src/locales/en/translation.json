@@ -30,5 +30,6 @@
   "request_failed": "Failed to submit request: ",
   "resume": "Resume",
   "application_success": "Application submitted successfully",
-  "application_failed": "Failed to submit application: "
+  "application_failed": "Failed to submit application: ",
+  "logout": "Logout"
 }

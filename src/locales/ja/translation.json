@@ -29,5 +29,6 @@
   "request_failed": "リクエストの送信に失敗しました：",
   "resume": "履歴書",
   "application_success": "申請が正常に送信されました",
-  "application_failed": "申請の送信に失敗しました："
+  "application_failed": "申請の送信に失敗しました：",
+  "logout": "ログアウト"
 }
