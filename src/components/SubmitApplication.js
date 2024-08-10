@@ -1,10 +1,8 @@
-// src/components/SubmitApplication.js
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/submitApplication.css";
-import "../styles/styles.css";
 
 const SubmitApplication = () => {
   const navigate = useNavigate();
@@ -36,17 +34,32 @@ const SubmitApplication = () => {
   };
 
   return (
-    <Formik
-      initialValues={{ name: "", email: "", resume: "" }}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <Field name="name" placeholder="Name" />
-        <Field name="email" type="email" placeholder="Email" />
-        <Field name="resume" as="textarea" placeholder="Resume" />
-        <button type="submit">Submit Application</button>
-      </Form>
-    </Formik>
+    <div className="application-container">
+      <h1>Submit Application</h1>
+      <Formik
+        initialValues={{ name: "", email: "", resume: "" }}
+        onSubmit={handleSubmit}
+      >
+        <Form className="application-form">
+          <Field name="name" placeholder="Name" className="form-field" />
+          <Field
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="form-field"
+          />
+          <Field
+            name="resume"
+            as="textarea"
+            placeholder="Resume"
+            className="form-field textarea-field"
+          />
+          <button type="submit" className="submit-button">
+            Submit Application
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 

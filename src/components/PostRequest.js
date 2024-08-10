@@ -1,10 +1,8 @@
-// src/components/PostRequest.js
 import React from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import "../styles/postRequest.css";
-import "../styles/styles.css";
 
 const PostRequest = () => {
   const navigate = useNavigate();
@@ -36,17 +34,32 @@ const PostRequest = () => {
   };
 
   return (
-    <Formik
-      initialValues={{ name: "", email: "", message: "" }}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <Field name="name" placeholder="Name" />
-        <Field name="email" type="email" placeholder="Email" />
-        <Field name="message" as="textarea" placeholder="Message" />
-        <button type="submit">Submit Request</button>
-      </Form>
-    </Formik>
+    <div className="post-request-container">
+      <h1>Submit Request</h1>
+      <Formik
+        initialValues={{ name: "", email: "", message: "" }}
+        onSubmit={handleSubmit}
+      >
+        <Form className="request-form">
+          <Field name="name" placeholder="Name" className="form-field" />
+          <Field
+            name="email"
+            type="email"
+            placeholder="Email"
+            className="form-field"
+          />
+          <Field
+            name="message"
+            as="textarea"
+            placeholder="Message"
+            className="form-field textarea-field"
+          />
+          <button type="submit" className="submit-button">
+            Submit Request
+          </button>
+        </Form>
+      </Formik>
+    </div>
   );
 };
 

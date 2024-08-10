@@ -1,38 +1,40 @@
-/* styles/postRequest.css */
+/* src/styles/postRequest.css */
 .post-request-container {
-  padding: 40px;
-  max-width: 600px;
-  margin: 0 auto;
-  background: white;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
-  border-radius: 8px;
-}
-
-.post-request-container form {
-  display: flex;
-  flex-direction: column;
-}
-
-.post-request-container form input,
-.post-request-container form textarea {
-  margin-bottom: 20px;
-  padding: 10px;
-  font-size: 16px;
+  max-width: 400px;
+  margin: 100px auto;
+  padding: 20px;
   border: 1px solid #ccc;
-  border-radius: 4px;
+  border-radius: 10px;
+  background-color: #fff;
 }
 
-.post-request-container form button {
-  background-color: #18bc9c;
-  color: white;
-  border: none;
+.post-request-container h1 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.request-form .form-field {
+  width: 100%;
   padding: 10px;
-  font-size: 18px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.request-form .textarea-field {
+  height: 100px; /* Or any height you prefer */
+}
+
+.submit-button {
+  width: 100%;
+  padding: 10px;
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
   cursor: pointer;
-  transition: background-color 0.3s;
 }
 
-.post-request-container form button:hover {
-  background-color: #16a085;
+.submit-button:hover {
+  background-color: #e69500;
 }
-
