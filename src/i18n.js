@@ -18,7 +18,7 @@ i18n
   .use(initReactI18next)
   .init({
     resources,
-    lng: localStorage.getItem("i18nextLng") || "en", // Default to English if no language is set
+    lng: "en", // Default to English if no language is set
     fallbackLng: "en", // Fallback to English
     debug: true,
     interpolation: {
