@@ -1,6 +1,6 @@
-// src/components/Login.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import "../styles/login.css";
 
 const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState("");
@@ -36,7 +36,7 @@ const Login = ({ setIsLoggedIn }) => {
   };
 
   return (
-    <div>
+    <div className="login-container">
       <h1>Login</h1>
       <input
         type="email"

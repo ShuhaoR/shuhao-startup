@@ -8,6 +8,7 @@ import Register from "./components/Register";
 import Login from "./components/Login";
 import PostRequest from "./components/PostRequest";
 import SubmitApplication from "./components/SubmitApplication";
+import ServicesSection from "./components/ServicesSection"; // Import the ServicesSection
 import "./styles/styles.css";
 
 function App() {
@@ -20,6 +21,8 @@ function App() {
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
+        <Route path="/services" element={<ServicesSection />} />{" "}
+        {/* Link Services */}
         <Route path="/company-intro" element={<CompanyIntro />} />
         <Route path="/register" element={<Register />} />
         <Route

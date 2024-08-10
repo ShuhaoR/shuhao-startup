@@ -100,7 +100,11 @@
   }
 }
 
+/* src/styles/styles.css */
+
 body {
+  background: url("../assets/images/taipei.png") no-repeat center center/cover;
+  padding-top: 70px; /* Adjust based on your navbar height */
   margin: 0;
   font-family: var(--bs-body-font-family);
   font-size: var(--bs-body-font-size);
@@ -3923,7 +3927,13 @@ fieldset:disabled .btn {
   --bs-navbar-toggler-border-radius: 0.375rem;
   --bs-navbar-toggler-focus-width: 0.25rem;
   --bs-navbar-toggler-transition: box-shadow 0.15s ease-in-out;
-  position: relative;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #ffffff; /* Adjust the background color as needed */
+  z-index: 1000; /* Ensure the navbar is above other content */
+  /*padding: 10px 0; /* Adjust padding as needed */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   display: flex;
   flex-wrap: wrap;
   align-items: center;
@@ -3933,12 +3943,19 @@ fieldset:disabled .btn {
 .navbar-links {
   list-style: none;
   display: flex;
-  gap: 20px;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
 }
 
-.navbar-links li a {
-  color: #ffbf00;
+.navbar-links li {
+  margin: 0 15px;
+}
+
+.navbar-links a {
   text-decoration: none;
+  color: #ffa500; /* Adjust the text color as needed */
+  font-weight: bold;
 }
 
 .navbar > .container,
@@ -11766,7 +11783,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: url("../assets/images/taipei.png") no-repeat center center/cover;
+  /*background: url("../assets/images/taipei.png") no-repeat center center/cover;*/
   color: white;
   text-align: center;
 }
@@ -11774,10 +11791,11 @@ body {
 .hero-content {
   max-width: 600px;
   margin: 0 auto;
+  color: #000;
 }
 
 .btn-primary {
-  background-color: #ffc800;
+  background-color: #000;
   border: none;
 }
 
@@ -11897,8 +11915,7 @@ nav ul li a:hover {
 .logout-button {
   background: none;
   border: none;
-  color: #ffa500; /* Adjust the color to match your theme */
+  color: #ffa500; /* Adjust the text color as needed */
+  font-weight: bold;
   cursor: pointer;
-  padding: 0;
-  font-size: 16px;
 }

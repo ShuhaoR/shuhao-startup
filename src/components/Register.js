@@ -1,45 +1,40 @@
 // src/components/Register.js
-import React from "react";
-import { Formik, Form, Field } from "formik";
-import axios from "axios";
-import { useNavigate } from "react-router-dom";
-import "../styles/styles.css";
+import React, { useState } from "react";
+import "../styles/register.css";
 
 const Register = () => {
-  const navigate = useNavigate();
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const handleSubmit = async (values) => {
-    try {
-      await axios.post(
-        "https://shuhao-startup.onrender.com/api/auth/register",
-        values
-      );
-      alert("Registration successful! Please log in.");
-      navigate("/login");
-    } catch (error) {
-      console.error(
-        "Registration error:",
-        error.response ? error.response.data.error : error.message
-      );
-      alert(
-        "Registration failed: " +
-          (error.response ? error.response.data.error : error.message)
-      );
-    }
+  const handleRegister = () => {
+    // Add your registration logic here
+    console.log("User registered:", { username, email, password });
   };
 
   return (
-    <Formik
-      initialValues={{ username: "", email: "", password: "" }}
-      onSubmit={handleSubmit}
-    >
-      <Form>
-        <Field name="username" placeholder="Username" />
-        <Field name="email" type="email" placeholder="Email" />
-        <Field name="password" type="password" placeholder="Password" />
-        <button type="submit">Register</button>
-      </Form>
-    </Formik>
+    <div className="register-container">
+      <h1>Register</h1>
+      <input
+        type="text"
+        value={username}
+        onChange={(e) => setUsername(e.target.value)}
+        placeholder="Username"
+      />
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+      />
+      <button onClick={handleRegister}>Register</button>
+    </div>
   );
 };
 

@@ -19,7 +19,7 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
           <Link to="/">Home</Link>
         </li>
         <li>
-          <Link to="/services">Services</Link>
+          <Link to="/services">Services</Link> {/* Link to Services */}
         </li>
         {!isLoggedIn ? (
           <>
