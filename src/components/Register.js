@@ -1,11 +1,13 @@
-// src/components/Register.js
 import React, { useState } from "react";
 import "../styles/register.css";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 
 const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const { t } = useTranslation(); // Initialize translation hook
 
   const handleRegister = () => {
     // Add your registration logic here
@@ -14,26 +16,27 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <h1>Register</h1>
+      <h1>{t("register_now")}</h1> {/* Translated Register */}
       <input
         type="text"
         value={username}
         onChange={(e) => setUsername(e.target.value)}
-        placeholder="Username"
+        placeholder={t("username")} // Translated Username
       />
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder="Email"
+        placeholder={t("email")} // Translated Email
       />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder="Password"
+        placeholder={t("password")} // Translated Password
       />
-      <button onClick={handleRegister}>Register</button>
+      <button onClick={handleRegister}>{t("register_now")}</button>{" "}
+      {/* Translated Register Button */}
     </div>
   );
 };

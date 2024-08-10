@@ -2,11 +2,13 @@ import React from "react";
 import { Formik, Form, Field } from "formik";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next"; // Import useTranslation hook
 import "../styles/postRequest.css";
 
 const PostRequest = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token"); // Retrieve the token from local storage
+  const { t } = useTranslation(); // Initialize translation hook
 
   const handleSubmit = async (values) => {
     try {
@@ -19,7 +21,7 @@ const PostRequest = () => {
           },
         }
       );
-      alert("Request submitted successfully");
+      alert(t("request_success")); // Translated success message
       navigate("/");
     } catch (error) {
       console.error(
@@ -27,35 +29,39 @@ const PostRequest = () => {
         error.response ? error.response.data.error : error.message
       );
       alert(
-        "Failed to submit request: " +
+        t("request_failed") +
           (error.response ? error.response.data.error : error.message)
-      );
+      ); // Translated failure message
     }
   };
 
   return (
     <div className="post-request-container">
-      <h1>Submit Request</h1>
+      <h1>{t("submit_request")}</h1> {/* Translated Submit Request */}
       <Formik
         initialValues={{ name: "", email: "", message: "" }}
         onSubmit={handleSubmit}
       >
         <Form className="request-form">
-          <Field name="name" placeholder="Name" className="form-field" />
+          <Field
+            name="name"
+            placeholder={t("name")} // Translated Name
+            className="form-field"
+          />
           <Field
             name="email"
             type="email"
-            placeholder="Email"
+            placeholder={t("email")} // Translated Email
             className="form-field"
           />
           <Field
             name="message"
             as="textarea"
-            placeholder="Message"
+            placeholder={t("message")} // Translated Message
             className="form-field textarea-field"
           />
           <button type="submit" className="submit-button">
-            Submit Request
+            {t("submit_request")} {/* Translated Submit Button */}
           </button>
         </Form>
       </Formik>

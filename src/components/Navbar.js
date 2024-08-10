@@ -1,9 +1,12 @@
 // src/components/Navbar.js
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import "../styles/styles.css";
+import LanguageSwitcher from "./LanguageSwitcher"; // Ensure this import is correct
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
+  const { t } = useTranslation(); // Hook to use translations
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -16,35 +19,43 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
     <nav className="navbar">
       <ul className="navbar-links">
         <li>
-          <Link to="/">Home</Link>
+          <Link to="/">{t("home")}</Link> {/* Translated Home */}
         </li>
         <li>
-          <Link to="/services">Services</Link> {/* Link to Services */}
+          <Link to="/services">{t("services")}</Link>{" "}
+          {/* Translated Services */}
         </li>
         {!isLoggedIn ? (
           <>
             <li>
-              <Link to="/register">Register</Link>
+              <Link to="/register">{t("register_now")}</Link>{" "}
+              {/* Translated Register */}
             </li>
             <li>
-              <Link to="/login">Login</Link>
+              <Link to="/login">{t("login")}</Link> {/* Translated Login */}
             </li>
           </>
         ) : (
           <>
             <li>
-              <Link to="/post-request">Post Request</Link>
+              <Link to="/post-request">{t("submit_request")}</Link>{" "}
+              {/* Translated Post Request */}
             </li>
             <li>
-              <Link to="/submit-application">Submit Application</Link>
+              <Link to="/submit-application">{t("submit_application")}</Link>{" "}
+              {/* Translated Submit Application */}
             </li>
             <li>
               <button onClick={handleLogout} className="logout-button">
-                Logout
+                {t("logout")} {/* Translated Logout */}
               </button>
             </li>
           </>
         )}
+        {/* Add the Language Switcher here */}
+        <li>
+          <LanguageSwitcher />
+        </li>
       </ul>
     </nav>
   );

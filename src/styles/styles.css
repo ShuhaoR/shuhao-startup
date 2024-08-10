@@ -11972,7 +11972,42 @@ nav ul li a:hover {
 .logout-button {
   background: none;
   border: none;
-  color: #ffa500; /* Adjust the text color as needed */
-  font-weight: bold;
+  color: #fff;
   cursor: pointer;
+}
+
+.logout-button:hover {
+  text-decoration: underline;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 10px;
+  margin-left: auto;
+}
+
+.language-switcher button {
+  background: none;
+  border: none;
+  color: #ffa500; /* Change this to match your design */
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.language-switcher button:hover {
+  text-decoration: underline;
+}
+
+/* src/styles/languageSwitcher.css */
+.language-select {
+  background-color: transparent;
+  color: #ff9900; /* Set this to match your navbar link color */
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.language-select option {
+  background-color: white;
+  color: black;
 }

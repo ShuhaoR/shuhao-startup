@@ -1,4 +1,5 @@
 // src/App.js
+import "./i18n"; // Add this to import i18n
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import Navbar from "./components/Navbar";
