@@ -1,6 +1,7 @@
 // src/components/Navbar.js
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
+import "../styles/styles.css";
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
@@ -8,93 +9,37 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const handleLogout = () => {
     localStorage.removeItem("isLoggedIn");
     setIsLoggedIn(false);
-    navigate("/");
+    navigate("/"); // Redirect to the home page or login page after logging out
   };
 
   return (
-    <nav style={{ background: "#2c3e50", padding: "1rem" }}>
-      <ul
-        style={{
-          display: "flex",
-          listStyleType: "none",
-          margin: 0,
-          padding: 0,
-        }}
-      >
+    <nav className="navbar">
+      <ul className="navbar-links">
+        <li>
+          <Link to="/">Home</Link>
+        </li>
+        <li>
+          <Link to="/services">Services</Link>
+        </li>
         {!isLoggedIn ? (
           <>
-            <li style={{ marginRight: "1rem" }}>
-              <Link to="/" style={{ color: "#ecf0f1", textDecoration: "none" }}>
-                Home
-              </Link>
-            </li>
-            <li style={{ marginRight: "1rem" }}>
-              <Link
-                to="/company-intro"
-                style={{ color: "#ecf0f1", textDecoration: "none" }}
-              >
-                Company Intro
-              </Link>
-            </li>
-            <li style={{ marginRight: "1rem" }}>
-              <Link
-                to="/register"
-                style={{ color: "#ecf0f1", textDecoration: "none" }}
-              >
-                Register
-              </Link>
+            <li>
+              <Link to="/register">Register</Link>
             </li>
             <li>
-              <Link
-                to="/login"
-                style={{ color: "#ecf0f1", textDecoration: "none" }}
-              >
-                Login
-              </Link>
+              <Link to="/login">Login</Link>
             </li>
           </>
         ) : (
           <>
-            <li style={{ marginRight: "1rem" }}>
-              <Link to="/" style={{ color: "#ecf0f1", textDecoration: "none" }}>
-                Home
-              </Link>
-            </li>
-            <li style={{ marginRight: "1rem" }}>
-              <Link
-                to="/company-intro"
-                style={{ color: "#ecf0f1", textDecoration: "none" }}
-              >
-                Company Intro
-              </Link>
-            </li>
-            <li style={{ marginRight: "1rem" }}>
-              <Link
-                to="/post-request"
-                style={{ color: "#ecf0f1", textDecoration: "none" }}
-              >
-                Post Request
-              </Link>
-            </li>
-            <li style={{ marginRight: "1rem" }}>
-              <Link
-                to="/submit-application"
-                style={{ color: "#ecf0f1", textDecoration: "none" }}
-              >
-                Submit Application
-              </Link>
+            <li>
+              <Link to="/post-request">Post Request</Link>
             </li>
             <li>
-              <button
-                onClick={handleLogout}
-                style={{
-                  background: "none",
-                  border: "none",
-                  color: "#ecf0f1",
-                  cursor: "pointer",
-                  textDecoration: "none",
-                }}
-              >
+              <Link to="/submit-application">Submit Application</Link>
+            </li>
+            <li>
+              <button onClick={handleLogout} className="logout-button">
                 Logout
               </button>
             </li>

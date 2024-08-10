@@ -1,15 +1,12 @@
-// src/components/CompanyIntro.js
-import React from 'react';
+import React from "react";
+import "../styles/styles.css";
 
 const CompanyIntro = () => {
   return (
     <div>
-      <h1>Welcome to Shuhao Shanghai Startup</h1>
-      <p>Our mission is to provide top-notch tech solutions to businesses and individuals.</p>
-      <p>We are passionate about innovation and excellence in every project we undertake.</p>
+      {/* You can keep this div or remove it as well if you don't need it */}
     </div>
   );
 };
 
 export default CompanyIntro;
-

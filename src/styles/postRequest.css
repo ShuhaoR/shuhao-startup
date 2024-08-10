@@ -1,0 +1,38 @@
+/* styles/postRequest.css */
+.post-request-container {
+  padding: 40px;
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.post-request-container form {
+  display: flex;
+  flex-direction: column;
+}
+
+.post-request-container form input,
+.post-request-container form textarea {
+  margin-bottom: 20px;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.post-request-container form button {
+  background-color: #18bc9c;
+  color: white;
+  border: none;
+  padding: 10px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.post-request-container form button:hover {
+  background-color: #16a085;
+}
+

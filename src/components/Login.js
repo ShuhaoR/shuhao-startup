@@ -1,35 +1,38 @@
 // src/components/Login.js
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ setIsLoggedIn }) => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async (values) => {
-    try {
-      const response = await axios.post('https://shuhao-startup.onrender.com/api/auth/login', values);
-      localStorage.setItem('isLoggedIn', true);
-      localStorage.setItem('token', response.data.token); // Store the token
-      setIsLoggedIn(true); // Update the state to reflect login status
-      navigate('/company-intro');
-    } catch (error) {
-      console.error('Login error:', error.response ? error.response.data.message : error.message);
-      alert('Login failed: ' + (error.response ? error.response.data.message : error.message));
-    }
+  const handleLogin = () => {
+    // Here you would add your login logic, possibly a call to the backend to validate the user
+    // For this example, we'll assume the login is always successful.
+    setIsLoggedIn(true);
+    localStorage.setItem("isLoggedIn", "true");
+    navigate("/post-request");
   };
 
   return (
-    <Formik initialValues={{ email: '', password: '' }} onSubmit={handleSubmit}>
-      <Form>
-        <Field name="email" type="email" placeholder="Email" />
-        <Field name="password" type="password" placeholder="Password" />
-        <button type="submit">Login</button>
-      </Form>
-    </Formik>
+    <div>
+      <h1>Login</h1>
+      <input
+        type="email"
+        value={email}
+        onChange={(e) => setEmail(e.target.value)}
+        placeholder="Email"
+      />
+      <input
+        type="password"
+        value={password}
+        onChange={(e) => setPassword(e.target.value)}
+        placeholder="Password"
+      />
+      <button onClick={handleLogin}>Login</button>
+    </div>
   );
 };
 
 export default Login;
-

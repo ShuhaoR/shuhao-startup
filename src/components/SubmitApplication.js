@@ -1,30 +1,45 @@
 // src/components/SubmitApplication.js
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { Formik, Form, Field } from "formik";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "../styles/submitApplication.css";
+import "../styles/styles.css";
 
 const SubmitApplication = () => {
   const navigate = useNavigate();
-  const token = localStorage.getItem('token'); // Retrieve the token from local storage
+  const token = localStorage.getItem("token"); // Retrieve the token from local storage
 
   const handleSubmit = async (values) => {
     try {
-      const response = await axios.post('https://shuhao-startup.onrender.com/api/applications', values, {
-        headers: {
-          'Authorization': `Bearer ${token}`, // Pass the token in the header
-        },
-      });
-      alert('Application submitted successfully');
-      navigate('/');
+      const response = await axios.post(
+        "https://shuhao-startup.onrender.com/api/applications",
+        values,
+        {
+          headers: {
+            Authorization: `Bearer ${token}`, // Pass the token in the header
+          },
+        }
+      );
+      alert("Application submitted successfully");
+      navigate("/");
     } catch (error) {
-      console.error('Failed to submit application:', error.response ? error.response.data.error : error.message);
-      alert('Failed to submit application: ' + (error.response ? error.response.data.error : error.message));
+      console.error(
+        "Failed to submit application:",
+        error.response ? error.response.data.error : error.message
+      );
+      alert(
+        "Failed to submit application: " +
+          (error.response ? error.response.data.error : error.message)
+      );
     }
   };
 
   return (
-    <Formik initialValues={{ name: '', email: '', resume: '' }} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={{ name: "", email: "", resume: "" }}
+      onSubmit={handleSubmit}
+    >
       <Form>
         <Field name="name" placeholder="Name" />
         <Field name="email" type="email" placeholder="Email" />
@@ -36,4 +51,3 @@ const SubmitApplication = () => {
 };
 
 export default SubmitApplication;
-

@@ -1,25 +1,38 @@
 // src/components/Register.js
-import React from 'react';
-import { Formik, Form, Field } from 'formik';
-import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import React from "react";
+import { Formik, Form, Field } from "formik";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import "../styles/styles.css";
 
 const Register = () => {
   const navigate = useNavigate();
 
   const handleSubmit = async (values) => {
     try {
-      await axios.post('https://shuhao-startup.onrender.com/api/auth/register', values);
-      alert('Registration successful! Please log in.');
-      navigate('/login');
+      await axios.post(
+        "https://shuhao-startup.onrender.com/api/auth/register",
+        values
+      );
+      alert("Registration successful! Please log in.");
+      navigate("/login");
     } catch (error) {
-      console.error('Registration error:', error.response ? error.response.data.error : error.message);
-      alert('Registration failed: ' + (error.response ? error.response.data.error : error.message));
+      console.error(
+        "Registration error:",
+        error.response ? error.response.data.error : error.message
+      );
+      alert(
+        "Registration failed: " +
+          (error.response ? error.response.data.error : error.message)
+      );
     }
   };
 
   return (
-    <Formik initialValues={{ username: '', email: '', password: '' }} onSubmit={handleSubmit}>
+    <Formik
+      initialValues={{ username: "", email: "", password: "" }}
+      onSubmit={handleSubmit}
+    >
       <Form>
         <Field name="username" placeholder="Username" />
         <Field name="email" type="email" placeholder="Email" />
@@ -31,4 +44,3 @@ const Register = () => {
 };
 
 export default Register;
-
