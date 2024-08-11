@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import axios from "axios"; // Import axios to make HTTP requests
+import axios from "axios";
 import "../styles/register.css";
 import { useTranslation } from "react-i18next";
 
@@ -26,7 +26,7 @@ const Register = () => {
     try {
       // Send POST request to backend
       const response = await axios.post(
-        "https://your-backend-url.com/api/register",
+        "https://shuhao-startup.onrender.com/api/auth/register", // Updated API endpoint
         {
           username,
           email,

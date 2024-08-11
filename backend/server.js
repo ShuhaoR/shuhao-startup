@@ -15,10 +15,10 @@ app.use(
   })
 );
 
-app.use("/api/auth", authRoutes);
-app.use("/api/requests", requestRoutes);
-app.use("/api/applications", applicationRoutes);
-app.use("/uploads", express.static("uploads"));
+app.use("/api/auth", authRoutes); // Auth routes
+app.use("/api/requests", requestRoutes); // Request routes
+app.use("/api/applications", applicationRoutes); // Application routes
+app.use("/uploads", express.static("uploads")); // Serve static files from 'uploads'
 
 const mongoURI =
   "mongodb+srv://ShuhaoR:Bobby1024%21@shuhao-startup.nubp8.mongodb.net/?retryWrites=true&w=majority&appName=Shuhao-Startup";
