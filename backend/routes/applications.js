@@ -20,7 +20,7 @@ router.post("/", async (req, res) => {
       major,
     });
     await newApplication.save();
-    res.status(201).json({ message: "Application submitted successfully" });
+    res.status(201).json({ message: "Success/提交成功" });
   } catch (error) {
     res.status(500).json({ error: error.message });
   }
