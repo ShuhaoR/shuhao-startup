@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios"; // Import axios to make HTTP requests
 import "../styles/register.css";
 import { useTranslation } from "react-i18next";
 
@@ -11,7 +12,7 @@ const Register = () => {
 
   const { t } = useTranslation();
 
-  const handleRegister = () => {
+  const handleRegister = async () => {
     // Clear previous errors
     setError("");
     setSuccess("");
@@ -22,9 +23,27 @@ const Register = () => {
       return;
     }
 
-    // Simulate registration process (replace with actual API call)
-    console.log("User registered:", { username, email, password });
-    setSuccess(t("registration_success")); // Show success message
+    try {
+      // Send POST request to backend
+      const response = await axios.post(
+        "https://your-backend-url.com/api/register",
+        {
+          username,
+          email,
+          password,
+        }
+      );
+
+      if (response.status === 201) {
+        // Assuming 201 is returned for successful registration
+        setSuccess(t("registration_success")); // Show success message
+      } else {
+        setError(t("registration_failed")); // Handle failure
+      }
+    } catch (error) {
+      console.error("Registration error:", error);
+      setError(t("registration_failed")); // Show a generic error message
+    }
   };
 
   return (
