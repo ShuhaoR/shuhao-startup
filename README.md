@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Getting Started with this startup project
 
 First try our website on (https://shuhao-startup.vercel.app/)
 You can register for an account;
