@@ -1,9 +1,8 @@
-// src/components/Register.js
-
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/register.css";
 import { useTranslation } from "react-i18next";
+import { useNavigate } from "react-router-dom"; // Import useNavigate from React Router
 
 const Register = () => {
   const [username, setUsername] = useState("");
@@ -13,8 +12,7 @@ const Register = () => {
   const [success, setSuccess] = useState("");
 
   const { t } = useTranslation();
-
-  // src/components/Register.js
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const handleRegister = async () => {
     setError("");
@@ -26,12 +24,6 @@ const Register = () => {
     }
 
     try {
-      console.log("Sending registration request:", {
-        username,
-        email,
-        password,
-      });
-
       const response = await axios.post(
         "https://shuhao-startup.onrender.com/api/auth/register",
         {
@@ -41,10 +33,9 @@ const Register = () => {
         }
       );
 
-      console.log("Registration response:", response);
-
       if (response.status === 201) {
         setSuccess(t("registration_success"));
+        navigate("/login"); // Redirect to the login page upon successful registration
       } else {
         setError(response.data.message || t("registration_failed"));
       }
