@@ -7,26 +7,23 @@ const Register = () => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [error, setError] = useState(""); // State to hold error messages
-  const [success, setSuccess] = useState(""); // State to hold success message
+  const [error, setError] = useState("");
+  const [success, setSuccess] = useState("");
 
   const { t } = useTranslation();
 
   const handleRegister = async () => {
-    // Clear previous errors
     setError("");
     setSuccess("");
 
-    // Basic validation
     if (!username || !email || !password) {
-      setError(t("all_fields_required")); // Translated error message
+      setError(t("all_fields_required"));
       return;
     }
 
     try {
-      // Send POST request to backend
       const response = await axios.post(
-        "https://shuhao-startup.onrender.com/api/auth/register", // Updated API endpoint
+        "https://shuhao-startup.onrender.com/api/auth/register", // Corrected API endpoint
         {
           username,
           email,
@@ -35,14 +32,16 @@ const Register = () => {
       );
 
       if (response.status === 201) {
-        // Assuming 201 is returned for successful registration
-        setSuccess(t("registration_success")); // Show success message
+        setSuccess(t("registration_success"));
       } else {
-        setError(t("registration_failed")); // Handle failure
+        setError(response.data.message || t("registration_failed"));
       }
     } catch (error) {
-      console.error("Registration error:", error);
-      setError(t("registration_failed")); // Show a generic error message
+      console.error(
+        "Registration error:",
+        error.response?.data || error.message
+      );
+      setError(error.response?.data?.error || t("registration_failed"));
     }
   };
 
@@ -68,9 +67,8 @@ const Register = () => {
         placeholder={t("password")}
       />
       <button onClick={handleRegister}>{t("register_now")}</button>
-      {error && <p className="error-message">{error}</p>} {/* Display error */}
-      {success && <p className="success-message">{success}</p>}{" "}
-      {/* Display success */}
+      {error && <p className="error-message">{error}</p>}
+      {success && <p className="success-message">{success}</p>}
     </div>
   );
 };
