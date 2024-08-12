@@ -1,3 +1,5 @@
+// src/components/Register.js
+
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/register.css";
@@ -12,6 +14,8 @@ const Register = () => {
 
   const { t } = useTranslation();
 
+  // src/components/Register.js
+
   const handleRegister = async () => {
     setError("");
     setSuccess("");
@@ -22,14 +26,22 @@ const Register = () => {
     }
 
     try {
+      console.log("Sending registration request:", {
+        username,
+        email,
+        password,
+      });
+
       const response = await axios.post(
-        "https://shuhao-startup.onrender.com/api/auth/register", // Corrected API endpoint
+        "https://shuhao-startup.onrender.com/api/auth/register",
         {
           username,
           email,
           password,
         }
       );
+
+      console.log("Registration response:", response);
 
       if (response.status === 201) {
         setSuccess(t("registration_success"));

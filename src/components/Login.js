@@ -1,3 +1,5 @@
+// src/components/Login.js
+
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next"; // Import useTranslation hook
@@ -11,8 +13,12 @@ const Login = ({ setIsLoggedIn }) => {
 
   const { t } = useTranslation(); // Initialize translation hook
 
+  // src/components/Login.js
+
   const handleLogin = async () => {
     try {
+      console.log("Sending login request:", { email, password });
+
       const response = await fetch(
         "https://shuhao-startup.onrender.com/api/auth/login",
         {
@@ -26,6 +32,8 @@ const Login = ({ setIsLoggedIn }) => {
 
       const data = await response.json();
 
+      console.log("Login response:", data);
+
       if (response.ok) {
         setIsLoggedIn(true);
         localStorage.setItem("isLoggedIn", "true");
@@ -34,7 +42,8 @@ const Login = ({ setIsLoggedIn }) => {
         setError(data.message);
       }
     } catch (err) {
-      setError(t("network_error")); // Use translated message
+      console.error("Network error:", err);
+      setError(t("network_error"));
     }
   };
 
