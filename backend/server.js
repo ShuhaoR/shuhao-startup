@@ -12,7 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(
   cors({
-    origin: "https://shuhao-startup.vercel.app", // Replace with your frontend's Vercel URL
+    origin: "https://shuhao-startup.com/", // Replace with your frontend's Vercel URL
     credentials: true,
   })
 );
