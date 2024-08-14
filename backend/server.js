@@ -11,10 +11,10 @@ const app = express();
 
 app.use(express.json());
 app.use(
-  cors({
-    origin: "https://shuhao-startup.vercel.app", // Replace with your frontend's Vercel URL
-    credentials: true,
-  })
+cors({
+  origin: ["https://shuhao-startup.com", "https://shuhao-startup.vercel.app"], // List all your frontend domains
+  credentials: true
+})
 );
 
 app.use("/api/auth", authRoutes); // Auth routes
