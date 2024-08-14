@@ -30,5 +30,8 @@
   "resume": "履歴書",
   "application_success": "申請が正常に送信されました",
   "application_failed": "申請の送信に失敗しました：",
-  "logout": "ログアウト"
+  "logout": "ログアウト",
+  "all_fields_required": "すべてのフィールドは必須です",
+  "registration_success": "成功",
+  "registration_failed": "登録に失敗しました"
 }

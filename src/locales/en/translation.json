@@ -31,5 +31,8 @@
   "resume": "Resume",
   "application_success": "Application submitted successfully",
   "application_failed": "Failed to submit application: ",
-  "logout": "Logout"
+  "logout": "Logout",
+  "all_fields_required": "All fields are required",
+  "registration_success": "Success",
+  "registration_failed": "Registration failed"
 }

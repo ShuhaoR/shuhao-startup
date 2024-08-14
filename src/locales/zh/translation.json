@@ -31,5 +31,8 @@
   "resume": "簡歷",
   "application_success": "申請提交成功",
   "application_failed": "提交申請失敗：",
-  "logout": "登出"
+  "logout": "登出",
+  "all_fields_required": "所有字段都是必填的",
+  "registration_success": "注册成功",
+  "registration_failed": "注册失败"
 }

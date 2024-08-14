@@ -34,7 +34,7 @@ const Register = () => {
       );
 
       if (response.status === 201) {
-        setSuccess(t("registration_success/成功"));
+        setSuccess(t("registration_success"));
         setTimeout(() => {
           navigate("/login"); // Redirect to the login page after 2 seconds
         }, 2000);
