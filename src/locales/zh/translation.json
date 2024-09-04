@@ -34,5 +34,10 @@
   "logout": "登出",
   "all_fields_required": "所有字段都是必填的",
   "registration_success": "注册成功",
-  "registration_failed": "注册失败"
+  "registration_failed": "注册失败",
+  "list_your_skills": "列出你的技能",
+   "when will you graduate":"你什么时候毕业？",
+   "phone":"電話",
+    "LinkedIn_URL": "领英链接",
+    "reasons":"為什麼選擇我們?"
 }

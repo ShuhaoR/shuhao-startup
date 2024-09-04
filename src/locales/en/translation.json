@@ -34,5 +34,11 @@
   "logout": "Logout",
   "all_fields_required": "All fields are required",
   "registration_success": "Success",
-  "registration_failed": "Registration failed"
+  "registration_failed": "Registration failed",
+  "list_your_skills": "list your skills",
+  "when will you graduate":"when will you graduate",
+  "phone":"phone",
+  "LinkedIn_URL": "LinkedIn URL",
+  "reasons":"why do you choose us?"
+
 }

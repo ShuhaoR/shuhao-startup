@@ -33,5 +33,10 @@
   "logout": "ログアウト",
   "all_fields_required": "すべてのフィールドは必須です",
   "registration_success": "成功",
-  "registration_failed": "登録に失敗しました"
+  "registration_failed": "登録に失敗しました",
+  "list_your_skills": "あなたのスキル",
+  "when will you graduate":"君はいつ卒業するのか？",
+  "phone":"電話",
+   "LinkedIn_URL": "LinkedIn リンク",
+    "reasons":"私たちを選ぶ理由?"
 }

@@ -10,15 +10,25 @@ const SubmitApplication = () => {
   const token = localStorage.getItem("token");
   const { t } = useTranslation();
 
-  const handleSubmit = async (values) => {
+  const handleSubmit = async (values, { setSubmitting, resetForm }) => {
+    const formData = new FormData();
+    formData.append("name", values.name);
+    formData.append("email", values.email);
+    formData.append("resumeFile", values.resumeFile);
+    formData.append("school", values.school);
+    formData.append("major", values.major);
+    formData.append("graduate", values.graduate);
+    formData.append("skills", values.skills);
+    formData.append("GPA", values.GPA);
+
     try {
       const response = await axios.post(
         "https://shuhao-startup.onrender.com/api/applications",
-        values,
+        formData,
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "application/json", // Change back to JSON format
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -33,6 +43,9 @@ const SubmitApplication = () => {
         t("application_failed") +
           (error.response ? error.response.data.error : error.message)
       );
+    } finally {
+      setSubmitting(false);
+      resetForm();
     }
   };
 
@@ -43,9 +56,11 @@ const SubmitApplication = () => {
         initialValues={{
           name: "",
           email: "",
-          resume: "",
+          resumeFile: null,
           school: "",
           major: "",
+          experience: "",
+          skills: "",
         }}
         onSubmit={handleSubmit}
         validate={(values) => {
@@ -56,56 +71,111 @@ const SubmitApplication = () => {
           if (!values.email) {
             errors.email = "Required";
           }
-          if (!values.resume) {
-            errors.resume = "Required";
+          if (!values.resumeFile) {
+            errors.resumeFile = "Required";
           }
           return errors;
         }}
       >
-        {({ errors, touched }) => (
+        {({ errors, touched, setFieldValue, isSubmitting }) => (
           <Form className="application-form">
+             <label htmlFor="name" className="form-label">{t("name")}</label>
             <Field
               name="name"
-              placeholder={t("name")}
               className={`form-field ${
                 touched.name && errors.name ? "error" : ""
               }`}
             />
-            {errors.name && touched.name && (
-              <div className="error-message">{errors.name}</div>
-            )}
+          <label htmlFor="email" className="form-label">{t("email")}</label>
             <Field
               name="email"
               type="email"
-              placeholder={t("email")}
               className={`form-field ${
                 touched.email && errors.email ? "error" : ""
               }`}
             />
-            {errors.email && touched.email && (
-              <div className="error-message">{errors.email}</div>
-            )}
+
+          <label htmlFor="phone" className="form-label">{t("phone")}</label>
             <Field
-              name="resume"
-              as="textarea"
-              placeholder={t("resume")} // Treat resume as text input
-              className={`form-field textarea-field ${
-                touched.resume && errors.resume ? "error" : ""
+              name="phone"
+              type="phone"
+              className={`form-field ${
+                touched.email && errors.email ? "error" : ""
               }`}
             />
-            {errors.resume && touched.resume && (
-              <div className="error-message">{errors.resume}</div>
-            )}
+
+            <label htmlFor="resumeFile" className="form-label">{t("resume")}</label>
+            <input
+              id="resumeFile"
+              name="resumeFile"
+              type="file"
+              onChange={(event) => {
+                setFieldValue("resumeFile", event.currentTarget.files[0]);
+              }}
+              className="form-field"
+            />
+            
+            <label htmlFor="linnked " className="form-label">{t("LinkedIn_URL")}</label>
+              <Field
+              name="linked"
+              type="linked"
+              className={`form-field ${
+                touched.email && errors.email ? "error" : ""
+              }`}
+            />
+             <label htmlFor="school graduated " className="form-label">{t("school_graduated")}</label>
             <Field
               name="school"
-              placeholder={t("school_graduated")}
               className="form-field"
             />
+            
+            <label htmlFor="major" className="form-label">{t("major")}</label>
             <Field
               name="major"
-              placeholder={t("major")}
               className="form-field"
+            />    
+            <label htmlFor="graduate" className="form-label">{t("when will you graduate")}</label>
+            <Field
+              name="graduate"
+              as="select"
+              className="form-field"
+            >
+               <option value="<select> ">{t("<select>")}</option>
+              <option value="December 2024 ">{t("December 2024 ")}</option>
+              <option value="Spring 2025">{t("Spring 2025")}</option>
+              <option value="December 2025">{t("December 2025")}</option>
+            </Field>
+            
+            
+            <label htmlFor="skills" className="form-label">{t("list_your_skills")}</label>
+            <Field
+              name="skills"
+              as="textarea"
+              className="form-field textarea-field"
             />
+            <label htmlFor="reasons" className="form-label">{t("reasons")}</label>
+            <Field
+              name="reasons"
+              as="textarea"
+              className="form-field textarea-field"
+            />
+            
+            <label htmlFor="GPA" className="form-label">{t("GPA")}</label>
+              <Field
+                name="GPA"
+                type="number"  
+                className={`form-field ${
+                  touched.GPA && errors.GPA ? "error" : ""
+                }`}
+                min="0"  
+                max="4.0" 
+                step="0.1"  
+                validate={(value) => {
+                  if (value < 0 || value > 4.0) {
+                    return "GPA must be between 0 and 4.0";
+                  }
+                }}
+/>
             <button type="submit" className="submit-button">
               {t("submit_application")}
             </button>
@@ -117,3 +187,5 @@ const SubmitApplication = () => {
 };
 
 export default SubmitApplication;
+
+
