@@ -145,8 +145,7 @@ const SubmitApplication = () => {
               <option value="Spring 2025">{t("Spring 2025")}</option>
               <option value="December 2025">{t("December 2025")}</option>
             </Field>
-            
-            
+              
             <label htmlFor="skills" className="form-label">{t("list_your_skills")}</label>
             <Field
               name="skills"
