@@ -1,13 +1,16 @@
+// src/components/Register.js
+
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/register.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from React Router
 
-const Register = () => {
+const Register = ({ role }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState(""); // New state for password confirmation
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -18,25 +21,31 @@ const Register = () => {
     setError("");
     setSuccess("");
 
-    if (!username || !email || !password) {
+    if (!username || !email || !password || !confirmPassword) {
       setError(t("all_fields_required"));
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setError(t("passwords_do_not_match"));
       return;
     }
 
     try {
       const response = await axios.post(
-        "https://shuhao-startup.onrender.com/api/auth/register",
+        `https://shuhao-startup.onrender.com/api/auth/register-${role}`, // Dynamic endpoint based on role (user or employee)
         {
           username,
           email,
           password,
+          confirmPassword,
         }
       );
 
       if (response.status === 201) {
         setSuccess(t("registration_success"));
         setTimeout(() => {
-          navigate("/login"); // Redirect to the login page after 2 seconds
+          navigate("/registration-success", { state: { role } }); // Redirect to the success page after 2 seconds
         }, 2000);
       } else {
         setError(response.data.message || t("registration_failed"));
@@ -52,7 +61,9 @@ const Register = () => {
 
   return (
     <div className="register-container">
-      <h1>{t("register_now")}</h1>
+      <h1>
+        {t("register_now")} as {role === "user" ? "User" : "Employee"}
+      </h1>
       <input
         type="text"
         value={username}
@@ -70,6 +81,12 @@ const Register = () => {
         value={password}
         onChange={(e) => setPassword(e.target.value)}
         placeholder={t("password")}
+      />
+      <input
+        type="password"
+        value={confirmPassword}
+        onChange={(e) => setConfirmPassword(e.target.value)}
+        placeholder={t("confirm_password")}
       />
       <button onClick={handleRegister}>{t("register_now")}</button>
       {error && <p className="error-message">{error}</p>}

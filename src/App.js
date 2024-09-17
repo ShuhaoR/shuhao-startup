@@ -10,6 +10,7 @@ import Login from "./components/Login";
 import PostRequest from "./components/PostRequest";
 import SubmitApplication from "./components/SubmitApplication";
 import ServicesSection from "./components/ServicesSection"; // Import the ServicesSection
+import RegistrationSuccess from "./components/RegistrationSuccess"; // Import the new RegistrationSuccess component
 import "./styles/styles.css";
 
 function App() {
@@ -25,13 +26,20 @@ function App() {
         <Route path="/services" element={<ServicesSection />} />{" "}
         {/* Link Services */}
         <Route path="/company-intro" element={<CompanyIntro />} />
-        <Route path="/register" element={<Register />} />
+        {/* Add role props to Register route for user or employee registration */}
+        <Route path="/register-user" element={<Register role="user" />} />
+        <Route
+          path="/register-employee"
+          element={<Register role="employee" />}
+        />
         <Route
           path="/login"
           element={<Login setIsLoggedIn={setIsLoggedIn} />}
         />
         <Route path="/post-request" element={<PostRequest />} />
         <Route path="/submit-application" element={<SubmitApplication />} />
+        {/* Add the RegistrationSuccess route */}
+        <Route path="/registration-success" element={<RegistrationSuccess />} />
       </Routes>
     </Router>
   );
