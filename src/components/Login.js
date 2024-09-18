@@ -13,30 +13,25 @@ const Login = ({ setIsLoggedIn }) => {
 
   const { t } = useTranslation(); // Initialize translation hook
 
-  // src/components/Login.js
-
   const handleLogin = async () => {
     try {
-      console.log("Sending login request:", { email, password });
+      const url = email.includes("employee")
+        ? "https://shuhao-sep.onrender.com/api/auth/login-employee"
+        : "https://shuhao-sep.onrender.com/api/auth/login-user";
 
-      const response = await fetch(
-        "https://shuhao-startup.onrender.com/api/auth/login",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ email, password }),
-        }
-      );
+      const response = await fetch(url, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email, password }),
+      });
 
       const data = await response.json();
 
-      console.log("Login response:", data);
-
       if (response.ok) {
         setIsLoggedIn(true);
-        localStorage.setItem("isLoggedIn", "true");
+        localStorage.setItem("token", data.token); // Store token in localStorage
         navigate("/services");
       } else {
         setError(data.message);

@@ -1,3 +1,5 @@
+// src/components/Navbar.js
+
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
@@ -9,9 +11,9 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
   const navigate = useNavigate();
 
   const handleLogout = () => {
-    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("token"); // Clear the JWT
     setIsLoggedIn(false);
-    navigate("/"); // Redirect to the home page or login page after logging out
+    navigate("/login"); // Redirect to login after logging out
   };
 
   return (

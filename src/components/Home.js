@@ -1,3 +1,5 @@
+// src/components/Home.js
+
 import React from "react";
 import { useTranslation } from "react-i18next";
 import HeroSection from "./HeroSection";

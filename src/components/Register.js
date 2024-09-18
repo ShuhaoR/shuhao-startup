@@ -33,7 +33,7 @@ const Register = ({ role }) => {
 
     try {
       const response = await axios.post(
-        `https://shuhaoseptember.onrender.com/api/auth/register-${role}`, // Dynamic endpoint based on role (user or employee)
+        `https://shuhao-sep.onrender.com/api/auth/register-${role}`, // Dynamic endpoint based on role (user or employee)
         {
           username,
           email,

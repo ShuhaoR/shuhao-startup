@@ -1,3 +1,5 @@
+// src/components/HeroSection.js
+
 import React from "react";
 import { useTranslation } from "react-i18next";
 import "../styles/styles.css";
