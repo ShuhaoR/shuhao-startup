@@ -1,4 +1,5 @@
 // src/components/RegistrationSuccess.js
+
 import React from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import "../styles/success.css"; // Import the CSS for this component
@@ -6,13 +7,13 @@ import "../styles/success.css"; // Import the CSS for this component
 const RegistrationSuccess = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const { role } = location.state || { role: "user" };
+  const { role } = location.state || { role: "user" }; // Default role to 'user'
 
   const handleRedirect = () => {
     if (role === "user") {
-      navigate("/login-user");
+      navigate("/login-user"); // Redirect to user login page
     } else if (role === "employee") {
-      navigate("/login-employee");
+      navigate("/login-employee"); // Redirect to employee login page
     }
   };
 

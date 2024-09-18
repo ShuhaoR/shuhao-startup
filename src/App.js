@@ -1,4 +1,5 @@
 // src/App.js
+
 import "./i18n"; // Add this to import i18n
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -23,8 +24,7 @@ function App() {
       <Navbar isLoggedIn={isLoggedIn} setIsLoggedIn={setIsLoggedIn} />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/services" element={<ServicesSection />} />{" "}
-        {/* Link Services */}
+        <Route path="/services" element={<ServicesSection />} />
         <Route path="/company-intro" element={<CompanyIntro />} />
         {/* Add role props to Register route for user or employee registration */}
         <Route path="/register-user" element={<Register role="user" />} />
