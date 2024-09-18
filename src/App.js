@@ -10,7 +10,8 @@ import Login from "./components/Login";
 import PostRequest from "./components/PostRequest";
 import SubmitApplication from "./components/SubmitApplication";
 import ServicesSection from "./components/ServicesSection"; // Import the ServicesSection
-import "./styles/styles.css";
+import Newservice from "./components/Newservice";
+
 
 function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(
@@ -32,6 +33,7 @@ function App() {
         />
         <Route path="/post-request" element={<PostRequest />} />
         <Route path="/submit-application" element={<SubmitApplication />} />
+        <Route path="/new-servics" element={<Newservice/>} />
       </Routes>
     </Router>
   );

@@ -103,7 +103,7 @@
 /* src/styles/styles.css */
 
 body {
-  background: url("../assets/images/taipei.png") no-repeat center center/cover;
+  background: url("../assets/images/taipei.png") no-repeat center center/cover; 
   height: 100vh;
   padding-top: 70px;
   margin: 0;

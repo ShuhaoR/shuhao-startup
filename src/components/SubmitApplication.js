@@ -5,7 +5,8 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../styles/submitApplication.css";
 
-const SubmitApplication = () => {
+
+ const SubmitApplication = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const { t } = useTranslation();
@@ -49,7 +50,7 @@ const SubmitApplication = () => {
     }
   };
 
-  return (
+ return (
     <div className="application-container">
       <h1>{t("submit_application")}</h1>
       <Formik
@@ -95,14 +96,14 @@ const SubmitApplication = () => {
               }`}
             />
 
-          <label htmlFor="phone" className="form-label">{t("phone")}</label>
+          {/* <label htmlFor="phone" className="form-label">{t("phone")}</label>
             <Field
               name="phone"
               type="phone"
               className={`form-field ${
                 touched.email && errors.email ? "error" : ""
               }`}
-            />
+            /> */}
 
             <label htmlFor="resumeFile" className="form-label">{t("resume")}</label>
             <input
@@ -140,7 +141,7 @@ const SubmitApplication = () => {
               as="select"
               className="form-field"
             >
-               <option value="<select> ">{t("<select>")}</option>
+              <option value="<select> ">{t("<select>")}</option>
               <option value="December 2024 ">{t("December 2024 ")}</option>
               <option value="Spring 2025">{t("Spring 2025")}</option>
               <option value="December 2025">{t("December 2025")}</option>
@@ -174,7 +175,7 @@ const SubmitApplication = () => {
                     return "GPA must be between 0 and 4.0";
                   }
                 }}
-/>
+              />
             <button type="submit" className="submit-button">
               {t("submit_application")}
             </button>
@@ -182,9 +183,7 @@ const SubmitApplication = () => {
         )}
       </Formik>
     </div>
-  );
+);
 };
 
 export default SubmitApplication;
-
-

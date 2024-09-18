@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
-import "../styles/styles.css";
 import LanguageSwitcher from "./LanguageSwitcher"; // Ensure this import is correct
 
 const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
@@ -34,7 +33,8 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
               <Link to="/login">{t("login")}</Link> {/* Translated Login */}
             </li>
           </>
-        ) : (
+        ) : 
+        (
           <>
             <li>
               <Link to="/post-request">{t("submit_request")}</Link>{" "}
@@ -55,6 +55,11 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         <li>
           <LanguageSwitcher />
         </li>
+        
+        <li>
+          <Link to="/new-servics">{t("new services")}</Link>{" "}
+        </li>
+      
       </ul>
     </nav>
   );

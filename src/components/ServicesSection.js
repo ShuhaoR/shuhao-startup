@@ -1,7 +1,6 @@
 import React from "react";
 import { useNavigate } from "react-router-dom"; // Import useNavigate for navigation
 import { useTranslation } from "react-i18next"; // Import useTranslation hook
-import "../styles/styles.css";
 import ecommerceIcon from "../assets/images/ecommerce.png"; // Replace with your actual file name
 import artistIcon from "../assets/images/artist.png"; // Replace with your actual file name
 import securityIcon from "../assets/images/security.png"; // Replace with your actual file name

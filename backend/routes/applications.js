@@ -15,9 +15,14 @@ router.post("/", async (req, res) => {
     const newApplication = new Application({
       name,
       email,
-      resume, // Store resume as text or URL
+      resumeFile, // Store resume as text or URL
       school,
       major,
+      graduate,
+      skills,
+      GPA,
+
+
     });
     await newApplication.save();
     res.status(201).json({ message: "Success/提交成功" });

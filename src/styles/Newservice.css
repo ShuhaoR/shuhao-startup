@@ -1,0 +1,19 @@
+.info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    gap: 20px; 
+  }
+  
+  .personal-info, .company-info {
+    padding: 10px;
+  }
+  
+  h3 {
+    margin-top: 0;
+  }
+  
+  .info-description, .info-phone, .info-email {
+    display: block; 
+    margin-bottom: 10px; 
+  }
+  
