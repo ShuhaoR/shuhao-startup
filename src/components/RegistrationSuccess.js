@@ -11,9 +11,9 @@ const RegistrationSuccess = () => {
 
   const handleRedirect = () => {
     if (role === "user") {
-      navigate("/login-user"); // Redirect to user login page
+      navigate("/login"); // Redirect to user login page
     } else if (role === "employee") {
-      navigate("/login-employee"); // Redirect to employee login page
+      navigate("/login"); // Redirect to employee login page
     }
   };
 
