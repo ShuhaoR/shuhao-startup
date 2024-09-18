@@ -1,0 +1,33 @@
+/* src/styles/success.css */
+.success-container {
+  max-width: 400px;
+  margin: 100px auto; /* Add enough margin to avoid overlapping with the navbar */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.success-container h1 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  color: #28a745; /* Green color to show success */
+}
+
+.success-container p {
+  margin-bottom: 20px;
+}
+
+.success-container button {
+  padding: 10px 20px;
+  background-color: #ffa500;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.success-container button:hover {
+  background-color: #e69500;
+}
