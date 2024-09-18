@@ -29,8 +29,12 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         {!isLoggedIn ? (
           <>
             <li>
-              <Link to="/register">{t("register_now")}</Link>{" "}
-              {/* Translated Register */}
+              <Link to="/register-user">{t("register_now")}</Link>{" "}
+              {/* Register User */}
+            </li>
+            <li>
+              <Link to="/register-employee">{t("register_as_employee")}</Link>{" "}
+              {/* Register Employee */}
             </li>
             <li>
               <Link to="/login">{t("login")}</Link> {/* Translated Login */}

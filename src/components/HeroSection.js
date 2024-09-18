@@ -14,10 +14,13 @@ const HeroSection = () => {
           <h1>{t("welcome_message")}</h1> {/* Translated Welcome message */}
           <p>{t("one_stop_solution")}</p>{" "}
           {/* Translated one-stop solution message */}
-          <a href="/register" className="btn btn-primary">
-            {t("register_now")} {/* Translated Register Now */}
+          <a href="/register-user" className="btn btn-primary">
+            {t("register_now_as_user")} {/* Register Now as User */}
           </a>
-          <a href="/login" className="btn btn-secondary">
+          <a href="/register-employee" className="btn btn-secondary">
+            {t("register_now_as_employee")} {/* Register Now as Employee */}
+          </a>
+          <a href="/login" className="btn btn-tertiary">
             {t("login")} {/* Translated Log In */}
           </a>
         </div>
