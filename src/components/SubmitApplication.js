@@ -5,8 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next";
 import "../styles/submitApplication.css";
 
-
- const SubmitApplication = () => {
+const SubmitApplication = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
   const { t } = useTranslation();
@@ -50,7 +49,7 @@ import "../styles/submitApplication.css";
     }
   };
 
- return (
+  return (
     <div className="application-container">
       <h1>{t("submit_application")}</h1>
       <Formik
@@ -80,31 +79,27 @@ import "../styles/submitApplication.css";
       >
         {({ errors, touched, setFieldValue, isSubmitting }) => (
           <Form className="application-form">
-             <label htmlFor="name" className="form-label">{t("name")}</label>
+            <label htmlFor="name" className="form-label">{t("name")} <span className="required">*</span></label>
             <Field
               name="name"
-              className={`form-field ${
-                touched.name && errors.name ? "error" : ""
-              }`}
+              className={`form-field ${touched.name && errors.name ? "error" : ""}`}
             />
-          <label htmlFor="email" className="form-label">{t("email")}</label>
+
+            <label htmlFor="email" className="form-label">{t("email")} <span className="required">*</span></label>
             <Field
               name="email"
               type="email"
-              className={`form-field ${
-                touched.email && errors.email ? "error" : ""
-              }`}
+              className={`form-field ${touched.email && errors.email ? "error" : ""}`}
             />
 
-          {/* <label htmlFor="phone" className="form-label">{t("phone")}</label>
+            <label htmlFor="phone" className="form-label">{t("phone")}</label>
             <Field
               name="phone"
               type="phone"
-              className={`form-field ${
-                touched.email && errors.email ? "error" : ""
-              }`}
-            /> */}
+              className={`form-field ${touched.email && errors.email ? "error" : ""}`}
+            />
 
+            
             <label htmlFor="resumeFile" className="form-label">{t("resume")}</label>
             <input
               id="resumeFile"
@@ -115,67 +110,45 @@ import "../styles/submitApplication.css";
               }}
               className="form-field"
             />
-            
-            <label htmlFor="linnked " className="form-label">{t("LinkedIn_URL")}</label>
-              <Field
-              name="linked"
-              type="linked"
-              className={`form-field ${
-                touched.email && errors.email ? "error" : ""
-              }`}
-            />
-             <label htmlFor="school graduated " className="form-label">{t("school_graduated")}</label>
+
+            <label htmlFor="linkedin" className="form-label">{t("LinkedIn_URL")}</label>
             <Field
-              name="school"
-              className="form-field"
+              name="linkedin"
+              type="url"
+              className={`form-field ${touched.email && errors.email ? "error" : ""}`}
             />
-            
+
+            <label htmlFor="school" className="form-label">{t("school_graduated")}</label>
+            <Field name="school" className="form-field" />
+
             <label htmlFor="major" className="form-label">{t("major")}</label>
-            <Field
-              name="major"
-              className="form-field"
-            />    
+            <Field name="major" className="form-field" />
+
             <label htmlFor="graduate" className="form-label">{t("when will you graduate")}</label>
-            <Field
-              name="graduate"
-              as="select"
-              className="form-field"
-            >
-              <option value="<select> ">{t("<select>")}</option>
-              <option value="December 2024 ">{t("December 2024 ")}</option>
+            <Field name="graduate" as="select" className="form-field">
+              <option value="">{t("<select>")}</option>
+              <option value="December 2024">{t("December 2024")}</option>
               <option value="Spring 2025">{t("Spring 2025")}</option>
               <option value="December 2025">{t("December 2025")}</option>
             </Field>
-              
+
             <label htmlFor="skills" className="form-label">{t("list_your_skills")}</label>
-            <Field
-              name="skills"
-              as="textarea"
-              className="form-field textarea-field"
-            />
+            <Field name="skills" as="textarea" className="form-field textarea-field" />
+
             <label htmlFor="reasons" className="form-label">{t("reasons")}</label>
-            <Field
-              name="reasons"
-              as="textarea"
-              className="form-field textarea-field"
-            />
-            
+            <Field name="reasons" as="textarea" className="form-field textarea-field" />
+
             <label htmlFor="GPA" className="form-label">{t("GPA")}</label>
-              <Field
-                name="GPA"
-                type="number"  
-                className={`form-field ${
-                  touched.GPA && errors.GPA ? "error" : ""
-                }`}
-                min="0"  
-                max="4.0" 
-                step="0.1"  
-                validate={(value) => {
-                  if (value < 0 || value > 4.0) {
-                    return "GPA must be between 0 and 4.0";
-                  }
-                }}
-              />
+            <Field
+              name="GPA"
+              type="number"
+              className={`form-field ${touched.GPA && errors.GPA ? "error" : ""}`}
+              min="0"
+              max="4.0"
+              step="0.1"
+              validate={(value) => (value < 0 || value > 4.0 ? "GPA must be between 0 and 4.0" : undefined)}
+            />
+
             <button type="submit" className="submit-button">
               {t("submit_application")}
             </button>
@@ -183,7 +156,7 @@ import "../styles/submitApplication.css";
         )}
       </Formik>
     </div>
-);
+  );
 };
 
 export default SubmitApplication;
