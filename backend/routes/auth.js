@@ -1,5 +1,3 @@
-// backend/routes/auth.js
-
 const express = require("express");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
@@ -86,6 +84,10 @@ router.post("/register-employee", async (req, res) => {
 
   if (password !== confirmPassword) {
     return res.status(400).json({ message: "Passwords do not match" });
+  }
+
+  if (!position) {
+    return res.status(400).json({ message: "Position is required" });
   }
 
   try {
@@ -239,6 +241,38 @@ router.get("/employees/pending", adminAuth, async (req, res) => {
   } catch (error) {
     console.error("Error fetching pending employees:", error);
     res.status(500).json({ error: "Could not fetch pending employees" });
+  }
+});
+
+// Get User Profile
+router.get("/user/profile/:id", async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json(user);
+  } catch (error) {
+    console.error("Error fetching user profile:", error);
+    res.status(500).json({ error: "Error fetching user profile" });
+  }
+});
+
+// Update User Profile
+router.put("/user/profile/:id", async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(
+      req.params.id,
+      { username: req.body.username, email: req.body.email },
+      { new: true }
+    );
+    if (!user) {
+      return res.status(404).json({ message: "User not found" });
+    }
+    res.status(200).json({ message: "Profile updated successfully", user });
+  } catch (error) {
+    console.error("Error updating user profile:", error);
+    res.status(500).json({ error: "Error updating profile" });
   }
 });
 
