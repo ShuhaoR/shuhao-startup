@@ -1,6 +1,6 @@
-// frontend/src/components/UserDashboard.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../styles/userDashboard.css";
 
 const UserDashboard = () => {
   const [user, setUser] = useState({});
@@ -42,7 +42,7 @@ const UserDashboard = () => {
   };
 
   return (
-    <div>
+    <div className="user-dashboard">
       <h1>User Dashboard</h1>
       <div>
         <h2>Profile Information</h2>
@@ -62,7 +62,6 @@ const UserDashboard = () => {
         {success && <p className="success-message">{success}</p>}
         {error && <p className="error-message">{error}</p>}
       </div>
-      {/* Add a section here to show past submissions or interactions */}
     </div>
   );
 };

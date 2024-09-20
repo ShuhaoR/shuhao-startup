@@ -1,6 +1,6 @@
-// frontend/src/components/EmployeeDashboard.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../styles/employeeDashboard.css";
 
 const EmployeeDashboard = () => {
   const [workHours, setWorkHours] = useState([]);
@@ -45,7 +45,7 @@ const EmployeeDashboard = () => {
   };
 
   return (
-    <div>
+    <div className="employee-dashboard">
       <h1>Employee Dashboard</h1>
       <div>
         <h2>Log Work Hours</h2>

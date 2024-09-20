@@ -1,0 +1,61 @@
+/* src/styles/adminReviewHours.css */
+
+.admin-review-hours {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admin-review-hours h1,
+.admin-review-hours h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.admin-review-hours input[type="number"] {
+  padding: 10px;
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.admin-review-hours button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.admin-review-hours button:hover {
+  background-color: #45a049;
+}
+
+.admin-review-hours ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.admin-review-hours li {
+  background-color: #fff;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
+  border: 1px solid #ddd;
+}
+
+.admin-review-hours .success-message {
+  color: #4caf50;
+  margin-top: 20px;
+}
+
+.admin-review-hours .error-message {
+  color: #f44336;
+  margin-top: 20px;
+}

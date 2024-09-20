@@ -1,6 +1,6 @@
-// frontend/src/components/AdminReviewHours.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../styles/adminReviewHours.css";
 
 const AdminReviewHours = () => {
   const [workHours, setWorkHours] = useState([]);
@@ -47,7 +47,7 @@ const AdminReviewHours = () => {
   };
 
   return (
-    <div>
+    <div className="admin-review-hours">
       <h1>Admin Review and Modify Work Hours</h1>
       <ul>
         {workHours.map((employee) => (

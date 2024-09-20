@@ -9,6 +9,7 @@ const Register = ({ role }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+  const [position, setPosition] = useState(""); // New state for position
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
@@ -19,7 +20,13 @@ const Register = ({ role }) => {
     setError("");
     setSuccess("");
 
-    if (!username || !email || !password || !confirmPassword) {
+    if (
+      !username ||
+      !email ||
+      !password ||
+      !confirmPassword ||
+      (role === "employee" && !position)
+    ) {
       setError(t("all_fields_required"));
       return;
     }
@@ -37,6 +44,7 @@ const Register = ({ role }) => {
           email,
           password,
           confirmPassword,
+          position: role === "employee" ? position : undefined, // Add position if it's an employee registration
         }
       );
 
@@ -86,6 +94,14 @@ const Register = ({ role }) => {
         onChange={(e) => setConfirmPassword(e.target.value)}
         placeholder={t("confirm_password")}
       />
+      {role === "employee" && (
+        <input
+          type="text"
+          value={position}
+          onChange={(e) => setPosition(e.target.value)}
+          placeholder="Position"
+        />
+      )}
       <button onClick={handleRegister}>{t("register_now")}</button>
       {error && <p className="error-message">{error}</p>}
       {success && <p className="success-message">{success}</p>}

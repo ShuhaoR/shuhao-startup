@@ -1,0 +1,50 @@
+/* src/styles/userDashboard.css */
+
+.user-dashboard {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.user-dashboard h1,
+.user-dashboard h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.user-dashboard input[type="text"],
+.user-dashboard input[type="email"] {
+  padding: 10px;
+  width: 100%;
+  margin: 10px 0;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+}
+
+.user-dashboard button {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+.user-dashboard button:hover {
+  background-color: #45a049;
+}
+
+.user-dashboard .success-message {
+  color: #4caf50;
+  margin-top: 20px;
+}
+
+.user-dashboard .error-message {
+  color: #f44336;
+  margin-top: 20px;
+}
