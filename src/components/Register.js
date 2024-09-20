@@ -1,21 +1,19 @@
-// src/components/Register.js
-
 import React, { useState } from "react";
 import axios from "axios";
 import "../styles/register.css";
 import { useTranslation } from "react-i18next";
-import { useNavigate } from "react-router-dom"; // Import useNavigate from React Router
+import { useNavigate } from "react-router-dom";
 
 const Register = ({ role }) => {
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState(""); // New state for password confirmation
+  const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
 
   const { t } = useTranslation();
-  const navigate = useNavigate(); // Initialize the useNavigate hook
+  const navigate = useNavigate();
 
   const handleRegister = async () => {
     setError("");
@@ -33,7 +31,7 @@ const Register = ({ role }) => {
 
     try {
       const response = await axios.post(
-        `https://shuhao-sep.onrender.com/api/auth/register-${role}`, // Dynamic endpoint based on role (user or employee)
+        `https://shuhao-sep.onrender.com/api/auth/register-${role}`,
         {
           username,
           email,
@@ -45,7 +43,7 @@ const Register = ({ role }) => {
       if (response.status === 201) {
         setSuccess(t("registration_success"));
         setTimeout(() => {
-          navigate("/registration-success", { state: { role } }); // Redirect to the success page after 2 seconds
+          navigate("/registration-success", { state: { role } });
         }, 2000);
       } else {
         setError(response.data.message || t("registration_failed"));

@@ -1,3 +1,5 @@
+// backend/server.js
+
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -10,21 +12,22 @@ const app = express();
 // Middleware to parse incoming JSON requests
 app.use(express.json());
 
-// CORS configuration
 app.use(
   cors({
     origin: [
       "https://shuhao-startup.com",
       "https://shuhao-startup.vercel.app",
       "https://ffsh.vercel.app",
-    ], // Add all your frontend domains
+      "http://localhost:5000", // Add this if you're testing on localhost
+      "http://localhost:5001", // Add this if your frontend is on port 5002
+    ],
     credentials: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE", // Allow specific HTTP methods
-    allowedHeaders: ["Content-Type", "Authorization"], // Specify allowed headers
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+    allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Add this route to handle preflight CORS requests
+// Handle preflight requests
 app.options("*", cors());
 
 app.use("/api/auth", authRoutes); // Auth routes

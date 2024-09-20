@@ -1,8 +1,6 @@
-// src/components/Login.js
-
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useTranslation } from "react-i18next"; // Import useTranslation hook
+import { useTranslation } from "react-i18next";
 import "../styles/login.css";
 
 const Login = ({ setIsLoggedIn }) => {
@@ -11,7 +9,7 @@ const Login = ({ setIsLoggedIn }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const { t } = useTranslation(); // Initialize translation hook
+  const { t } = useTranslation();
 
   const handleLogin = async () => {
     try {
@@ -44,21 +42,20 @@ const Login = ({ setIsLoggedIn }) => {
 
   return (
     <div className="login-container">
-      <h1>{t("login")}</h1> {/* Translated Login */}
+      <h1>{t("login")}</h1>
       <input
         type="email"
         value={email}
         onChange={(e) => setEmail(e.target.value)}
-        placeholder={t("email")} // Translated Email
+        placeholder={t("email")}
       />
       <input
         type="password"
         value={password}
         onChange={(e) => setPassword(e.target.value)}
-        placeholder={t("password")} // Translated Password
+        placeholder={t("password")}
       />
-      <button onClick={handleLogin}>{t("login")}</button>{" "}
-      {/* Translated Login Button */}
+      <button onClick={handleLogin}>{t("login")}</button>
       {error && <p>{error}</p>}
     </div>
   );
