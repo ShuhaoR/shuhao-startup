@@ -1,6 +1,7 @@
 // src/components/UserDashboard.js
 import React, { useState, useEffect } from "react";
 import axios from "axios";
+import "../styles/userDashboard.css";
 
 const UserDashboard = () => {
   const [user, setUser] = useState(null);
