@@ -1,5 +1,3 @@
-// src/App.js
-
 import "./i18n"; // Add this to import i18n
 import React, { useState } from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
@@ -12,6 +10,9 @@ import PostRequest from "./components/PostRequest";
 import SubmitApplication from "./components/SubmitApplication";
 import ServicesSection from "./components/ServicesSection"; // Import the ServicesSection
 import RegistrationSuccess from "./components/RegistrationSuccess"; // Import the new RegistrationSuccess component
+import UserDashboard from "./components/UserDashboard"; // Import UserDashboard
+import EmployeeDashboard from "./components/EmployeeDashboard"; // Import EmployeeDashboard
+import AdminDashboard from "./components/AdminDashboard"; // Import AdminDashboard
 import "./styles/styles.css";
 
 function App() {
@@ -26,7 +27,6 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/services" element={<ServicesSection />} />
         <Route path="/company-intro" element={<CompanyIntro />} />
-        {/* Add role props to Register route for user or employee registration */}
         <Route path="/register-user" element={<Register role="user" />} />
         <Route
           path="/register-employee"
@@ -38,8 +38,10 @@ function App() {
         />
         <Route path="/post-request" element={<PostRequest />} />
         <Route path="/submit-application" element={<SubmitApplication />} />
-        {/* Add the RegistrationSuccess route */}
         <Route path="/registration-success" element={<RegistrationSuccess />} />
+        <Route path="/user-dashboard" element={<UserDashboard />} />
+        <Route path="/employee-dashboard" element={<EmployeeDashboard />} />
+        <Route path="/admin-dashboard" element={<AdminDashboard />} />
       </Routes>
     </Router>
   );
