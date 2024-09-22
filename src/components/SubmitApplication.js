@@ -35,6 +35,7 @@ const SubmitApplication = () => {
       alert(t("application_success"));
       navigate("/");
     } catch (error) {
+      console.log('Response:', error.response);
       console.error(
         "Failed to submit application:",
         error.response ? error.response.data.error : error.message
@@ -92,12 +93,12 @@ const SubmitApplication = () => {
               className={`form-field ${touched.email && errors.email ? "error" : ""}`}
             />
 
-            <label htmlFor="phone" className="form-label">{t("phone")}</label>
+            {/* <label htmlFor="phone" className="form-label">{t("phone")}</label>
             <Field
               name="phone"
               type="phone"
               className={`form-field ${touched.email && errors.email ? "error" : ""}`}
-            />
+            /> */}
 
             
             <label htmlFor="resumeFile" className="form-label">{t("resume")}</label>

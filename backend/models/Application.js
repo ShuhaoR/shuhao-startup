@@ -11,9 +11,6 @@ const applicationSchema = new mongoose.Schema({
   GPA:{type:Float,require:true},
   date: { type: Date, default: Date.now },
 
-
-
-
 });
 
 module.exports = mongoose.model("Application", applicationSchema);

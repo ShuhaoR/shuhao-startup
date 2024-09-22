@@ -1,5 +1,5 @@
 /* src/styles/submitApplication.css */
-body {
+/* body {
   background-color: white !important; 
   background-image: none !important; 
   margin: 0;
@@ -9,7 +9,7 @@ body {
 
 html {
   height: 100%;
-}
+} */
 .application-container {
   width:50%;
   max-width: 400px;

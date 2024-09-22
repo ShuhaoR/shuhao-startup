@@ -3,7 +3,7 @@ const Application = require("../models/Application");
 const router = express.Router();
 
 router.post("/", async (req, res) => {
-  const { name, email, resume, school, major } = req.body;
+  const { name, email, resumeFile, school, major,graduate, skills, GPA} = req.body;
 
   if (!name || !email || !resume) {
     return res
@@ -21,7 +21,6 @@ router.post("/", async (req, res) => {
       graduate,
       skills,
       GPA,
-
 
     });
     await newApplication.save();
