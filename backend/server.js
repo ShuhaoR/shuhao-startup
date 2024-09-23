@@ -1,5 +1,4 @@
 // backend/server.js
-
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
@@ -12,30 +11,34 @@ const app = express();
 // Middleware to parse incoming JSON requests
 app.use(express.json());
 
+// Configure CORS
 app.use(
   cors({
-    origin: [
-      "https://shuhao-startup.com",
-      "https://shuhao-startup.vercel.app",
-      "https://shuhao-startup-5.onrender.com",
-      "https://ffsh.vercel.app",
-      "http://localhost:5000", // Add this if you're testing on localhost
-      "http://localhost:5001", // Add this if your frontend is on port 5002
-      "http://localhost:3000", // Add this if your frontend is on port 5002
-    ],
-    credentials: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+
+    origin: true,
+    credentials: true, // Enable credentials (cookies, authorization headers)
+    methods: "GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS", // Include OPTIONS for preflight
     allowedHeaders: ["Content-Type", "Authorization"],
   })
 );
 
-// Handle preflight requests
-app.options("*", cors());
+// Handle preflight OPTIONS requests manually (for specific routes)
+app.use((req, res, next) => {
+  if (req.method === 'OPTIONS') {
+    res.header('Access-Control-Allow-Origin', req.headers.origin); // Allow specific origin
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PUT,PATCH,DELETE,OPTIONS'); // Allowed methods
+    res.header('Access-Control-Allow-Headers', 'Authorization, Content-Type'); // Allowed headers
+    res.header('Access-Control-Allow-Credentials', 'true'); // Allow credentials
+    return res.status(200).json({}); // Respond OK to OPTIONS preflight
+  }
+  next(); // Pass to next middleware if not OPTIONS
+});
 
+// Routes
 app.use("/api/auth", authRoutes); // Auth routes
 app.use("/api/requests", requestRoutes); // Request routes
 app.use("/api/applications", applicationRoutes); // Application routes
-app.use("/uploads", express.static("uploads")); // Serve static files from 'uploads'
+app.use("/uploads", express.static("uploads")); 
 
 // MongoDB connection URI
 const mongoURI =
@@ -54,9 +57,8 @@ mongoose
   });
 
 // Server listening on the correct port for Render or other hosting services
-const port = process.env.PORT || 5000|| 3000;
+const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
-
 //
