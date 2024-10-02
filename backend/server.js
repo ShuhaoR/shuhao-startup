@@ -17,6 +17,7 @@ app.use(express.json());
 app.use(
   cors({
     origin: [
+      "https://shuhao-startup-4.onrender.com",
       "https://shuhao-startup.com",
       "https://shuhao-startup.vercel.app",
       "https://ffsh.vercel.app",
