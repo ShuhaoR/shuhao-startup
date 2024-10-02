@@ -17,8 +17,8 @@ app.use(
       "https://shuhao-startup.com",
       "https://shuhao-startup.vercel.app",
       "https://ffsh.vercel.app",
-      "http://localhost:5000", // Add this if you're testing on localhost
-      "http://localhost:5001", // Add this if your frontend is on port 5002
+      "http://localhost:5000", 
+      "http://localhost:5001", 
     ],
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
