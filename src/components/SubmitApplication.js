@@ -28,7 +28,6 @@ const SubmitApplication = () => {
         {
           headers: {
             Authorization: `Bearer ${token}`,
-            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -93,14 +92,6 @@ const SubmitApplication = () => {
               className={`form-field ${touched.email && errors.email ? "error" : ""}`}
             />
 
-            {/* <label htmlFor="phone" className="form-label">{t("phone")}</label>
-            <Field
-              name="phone"
-              type="phone"
-              className={`form-field ${touched.email && errors.email ? "error" : ""}`}
-            /> */}
-
-            
             <label htmlFor="resumeFile" className="form-label">{t("resume")}</label>
             <input
               id="resumeFile"
@@ -161,5 +152,4 @@ const SubmitApplication = () => {
 };
 
 export default SubmitApplication;
-
 

@@ -1,6 +1,7 @@
 import React from "react";
 import "../styles/Newservice.css";
 import { useNavigate } from "react-router-dom"; 
+
 const Newservice = () => {
   const navigate = useNavigate();
   return (
@@ -28,8 +29,6 @@ const Newservice = () => {
                 </div>
               </div>
 
-
-        
         <h2 className="section-title">bobby's thing</h2>
         <div className="service-cards">
           <div className="service-card">

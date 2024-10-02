@@ -3,6 +3,8 @@ import axios from "axios";
 import "../styles/register.css";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom"; // Import useNavigate from React Router
+import "../styles/submitApplication.css";
+
 
 const Register = () => {
   const [username, setUsername] = useState("");

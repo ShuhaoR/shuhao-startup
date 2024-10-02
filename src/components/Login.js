@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useTranslation } from "react-i18next"; // Import useTranslation hook
 import "../styles/login.css";
+import "../styles/submitApplication.css";
 
 const Login = ({ setIsLoggedIn }) => {
   const [email, setEmail] = useState("");

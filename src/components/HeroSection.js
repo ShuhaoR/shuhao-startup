@@ -1,6 +1,6 @@
 import React from "react";
 import { useTranslation } from "react-i18next";
-//import "../styles/styles.css";
+
 
 const HeroSection = () => {
   const { t } = useTranslation(); // Initialize translation hook

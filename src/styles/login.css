@@ -2,9 +2,8 @@
   max-width: 400px;
   margin: 100px auto;
   padding: 20px;
-  border: 1px solid #ccc;
   border-radius: 10px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0);
 }
 
 .login-container h1 {
@@ -21,13 +20,15 @@
 }
 
 .login-container button {
-  width: 100%;
-  padding: 10px;
-  background-color: #ffa500;
-  color: #fff;
+  background-color: #007bff;
+  color: white;
+  padding: 12px 20px;
+  margin: 10px 0;
   border: none;
-  border-radius: 5px;
+  border-radius: 25px;
   cursor: pointer;
+  width: 100%;
+  font-size: 16px;
 }
 
 .login-container button:hover {

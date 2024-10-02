@@ -10,7 +10,7 @@ import Login from "./components/Login";
 import PostRequest from "./components/PostRequest";
 import SubmitApplication from "./components/SubmitApplication";
 import ServicesSection from "./components/ServicesSection"; // Import the ServicesSection
-import Newservice from "./components/Newservice";
+import Bobby from "./components/Newservice";
 
 
 function App() {
@@ -33,7 +33,7 @@ function App() {
         />
         <Route path="/post-request" element={<PostRequest />} />
         <Route path="/submit-application" element={<SubmitApplication />} />
-        <Route path="/new-servics" element={<Newservice/>} />
+        <Route path="/bobby-website" element={<Bobby/>} />
       </Routes>
     </Router>
   );
