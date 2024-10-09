@@ -13,13 +13,7 @@ app.use(express.json());
 
 app.use(
   cors({
-    origin: [
-      "https://shuhao-startup.com",
-      "https://shuhao-startup.vercel.app",
-      "https://ffsh.vercel.app",
-      "http://localhost:5000", 
-      "http://localhost:5001", 
-    ],
+    origin: true, // 或者用 '*'，表示允许所有来源
     credentials: true,
     methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
     allowedHeaders: ["Content-Type", "Authorization"],
@@ -55,3 +49,4 @@ const port = process.env.PORT || 5000;
 app.listen(port, () => {
   console.log(`Server running on port ${port}`);
 });
+
