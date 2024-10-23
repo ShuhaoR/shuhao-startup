@@ -59,6 +59,10 @@ const Navbar = ({ isLoggedIn, setIsLoggedIn }) => {
         <li>
           <Link to="/bobby-website">{t("bobby website")}</Link>{" "}
         </li>
+
+        <li>
+          <Link to="/team">{t("Team")}</Link>{" "}
+        </li>
       
       </ul>
     </nav>

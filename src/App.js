@@ -11,6 +11,7 @@ import PostRequest from "./components/PostRequest";
 import SubmitApplication from "./components/SubmitApplication";
 import ServicesSection from "./components/ServicesSection"; // Import the ServicesSection
 import Bobby from "./components/Newservice";
+import Team from "./components/Team";
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
         <Route path="/post-request" element={<PostRequest />} />
         <Route path="/submit-application" element={<SubmitApplication />} />
         <Route path="/bobby-website" element={<Bobby/>} />
+        <Route path="/team" element={<Team/>} />
       </Routes>
     </Router>
   );
