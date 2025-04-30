@@ -9,10 +9,7 @@ Next time, log in;
 
 
 ## 🛠️ Setup
-```bash
-# Clone the repository
-git clone https://github.com/yourusername/shuhao-startup.git
-cd shuhao-startup
+
 To run this project code:
 To start backend:
 ### node backend/server.js
