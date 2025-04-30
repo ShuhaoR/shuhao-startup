@@ -16,12 +16,6 @@ To start backend:
 Then to start frontend:
 ### npm start
 
-
----
-
-## ✅ `shuhao-startup` – README.md
-
-```markdown
 # shuhao-startup
 
 ## 🧾 Overview
